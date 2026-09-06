@@ -1,0 +1,646 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | REDGO</title>
+
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+    <main class="login-page">
+
+        <!-- LEFT IMAGE SECTION -->
+
+        <section class="login-image">
+
+            <img src="./images/Hamburger.jpg" alt="Food">
+
+            <div class="image-overlay"></div>
+
+            <div class="image-content">
+
+                <a href="index.html" class="logo">
+                    RED<span>GO</span>
+                </a>
+
+                <div class="image-text">
+
+                    <p class="small-title">
+                        FOOD • DELIVERY • HAPPINESS
+                    </p>
+
+                    <h1>
+                        Your favourite
+                        food is waiting.
+                    </h1>
+
+                    <p>
+                        Order delicious meals from restaurants
+                        around you and enjoy fast delivery.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LOGIN SECTION -->
+
+        <section class="login-section">
+
+            <div class="login-box">
+
+                <!-- MOBILE LOGO -->
+
+                <a href="index.html" class="mobile-logo">
+                    RED<span>GO</span>
+                </a>
+
+
+                <!-- WELCOME -->
+
+                <div class="welcome">
+
+                    <p>WELCOME BACK</p>
+
+                    <h2>
+                        Login to REDGO
+                    </h2>
+
+                    <span>
+                        Enter your details to continue.
+                    </span>
+
+                </div>
+
+
+                <!-- LOGIN FORM -->
+
+                <form class="login-form" id="loginForm">
+
+                    <!-- EMAIL / PHONE -->
+
+                    <div class="input-group">
+
+                        <label for="email">
+                            Email or phone number
+                        </label>
+
+                        <div class="input-box">
+
+                            <div class="input-icon">
+
+                                <img
+                                    src="./images/phone.jpg"
+                                    alt="User"
+                                >
+
+                            </div>
+
+                            <input
+                                type="text"
+                                id="email"
+                                placeholder="Enter your email or phone"
+                                autocomplete="username"
+                                required
+                            >
+
+                        </div>
+
+                        <small class="error-message" id="emailError"></small>
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="input-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <div class="input-box">
+
+                            <div class="input-icon">
+
+                                <img
+                                    src="./Images/Password free icons designed by Gregor Cresnar.jpg"
+                                    alt="Password"
+                                >
+
+                            </div>
+
+                            <input
+                                type="password"
+                                id="password"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="show-password"
+                                id="showPassword"
+                                aria-label="Show password"
+                            >
+                                👁
+                            </button>
+
+                        </div>
+
+                        <small class="error-message" id="passwordError"></small>
+
+                    </div>
+
+
+                    <!-- OPTIONS -->
+
+                    <div class="options">
+
+                        <label class="remember">
+
+                            <input
+                                type="checkbox"
+                                id="rememberMe"
+                            >
+
+                            <span>
+                                Remember me
+                            </span>
+
+                        </label>
+
+                        <a href="#" id="forgotPassword">
+                            Forgot password?
+                        </a>
+
+                    </div>
+
+
+                    <!-- LOGIN BUTTON -->
+
+                    <button
+                        type="submit"
+                        class="login-button"
+                        id="loginButton"
+                    >
+
+                        <span id="loginButtonText">
+                            Login
+                        </span>
+
+                        <span class="arrow" id="loginArrow">
+                            →
+                        </span>
+
+                    </button>
+
+                </form>
+
+
+                <!-- DIVIDER -->
+
+                <div class="divider">
+
+                    <span></span>
+
+                    <p>OR</p>
+
+                    <span></span>
+
+                </div>
+
+
+                <!-- CREATE ACCOUNT -->
+
+                <a
+                    href="createaccount.html"
+                    class="create-account"
+                >
+                    Create a new account
+                </a>
+
+
+                <!-- TERMS -->
+
+                <p class="terms">
+
+                    By continuing, you agree to our
+
+                    <a href="#">
+                        Terms of Service
+                    </a>
+
+                    and
+
+                    <a href="#">
+                        Privacy Policy
+                    </a>.
+
+                </p>
+
+
+                <!-- BACK HOME -->
+
+                <a
+                    href="index.html"
+                    class="back-home"
+                >
+                    ← Back to REDGO
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- LOGIN PROCESSING -->
+
+    <div
+        class="login-processing"
+        id="loginProcessing"
+    >
+
+        <div class="processing-box">
+
+            <div
+                class="loading-circle"
+                id="loadingCircle"
+            ></div>
+
+            <div
+                class="success-icon"
+                id="successIcon"
+            >
+                ✓
+            </div>
+
+            <h3 id="processingTitle">
+                Logging you in...
+            </h3>
+
+            <p id="processingText">
+                Please wait while we verify your details.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        /* ================================
+           GET HTML ELEMENTS
+        ================================= */
+
+        const loginForm =
+            document.getElementById("loginForm");
+
+        const emailInput =
+            document.getElementById("email");
+
+        const passwordInput =
+            document.getElementById("password");
+
+        const emailError =
+            document.getElementById("emailError");
+
+        const passwordError =
+            document.getElementById("passwordError");
+
+        const loginButton =
+            document.getElementById("loginButton");
+
+        const loginButtonText =
+            document.getElementById("loginButtonText");
+
+        const loginArrow =
+            document.getElementById("loginArrow");
+
+        const loginProcessing =
+            document.getElementById("loginProcessing");
+
+        const processingTitle =
+            document.getElementById("processingTitle");
+
+        const processingText =
+            document.getElementById("processingText");
+
+        const loadingCircle =
+            document.getElementById("loadingCircle");
+
+        const successIcon =
+            document.getElementById("successIcon");
+
+        const showPassword =
+            document.getElementById("showPassword");
+
+        const forgotPassword =
+            document.getElementById("forgotPassword");
+
+
+        /* ================================
+           SHOW / HIDE PASSWORD
+        ================================= */
+
+        showPassword.addEventListener(
+            "click",
+            function () {
+
+                if (passwordInput.type === "password") {
+
+                    passwordInput.type = "text";
+
+                    showPassword.textContent = "🙈";
+
+                    showPassword.setAttribute(
+                        "aria-label",
+                        "Hide password"
+                    );
+
+                } else {
+
+                    passwordInput.type = "password";
+
+                    showPassword.textContent = "👁";
+
+                    showPassword.setAttribute(
+                        "aria-label",
+                        "Show password"
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* ================================
+           CLEAR ERRORS WHILE TYPING
+        ================================= */
+
+        emailInput.addEventListener(
+            "input",
+            function () {
+
+                emailError.textContent = "";
+
+                emailInput.classList.remove("input-error");
+
+            }
+        );
+
+
+        passwordInput.addEventListener(
+            "input",
+            function () {
+
+                passwordError.textContent = "";
+
+                passwordInput.classList.remove("input-error");
+
+            }
+        );
+
+
+        /* ================================
+           FORGOT PASSWORD
+        ================================= */
+
+        forgotPassword.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+                alert(
+                    "Password recovery is coming soon."
+                );
+
+            }
+        );
+
+
+        /* ================================
+           LOGIN FORM
+        ================================= */
+
+        loginForm.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+
+                /* GET VALUES */
+
+                const email =
+                    emailInput.value.trim();
+
+                const password =
+                    passwordInput.value.trim();
+
+
+                /* RESET ERRORS */
+
+                emailError.textContent = "";
+
+                passwordError.textContent = "";
+
+                emailInput.classList.remove(
+                    "input-error"
+                );
+
+                passwordInput.classList.remove(
+                    "input-error"
+                );
+
+
+                let valid = true;
+
+
+                /* ================================
+                   CHECK EMAIL / PHONE
+                ================================= */
+
+                if (email === "") {
+
+                    emailError.textContent =
+                        "Please enter your email or phone number.";
+
+                    emailInput.classList.add(
+                        "input-error"
+                    );
+
+                    valid = false;
+
+                }
+
+
+                /* ================================
+                   CHECK PASSWORD
+                ================================= */
+
+                if (password === "") {
+
+                    passwordError.textContent =
+                        "Please enter your password.";
+
+                    passwordInput.classList.add(
+                        "input-error"
+                    );
+
+                    valid = false;
+
+                }
+
+
+                /* STOP IF INVALID */
+
+                if (!valid) {
+
+                    return;
+
+                }
+
+
+                /* ================================
+                   DISABLE BUTTON
+                ================================= */
+
+                loginButton.disabled = true;
+
+                loginButtonText.textContent =
+                    "Checking...";
+
+                loginArrow.textContent =
+                    "⏳";
+
+
+                /* ================================
+                   SHOW PROCESSING SCREEN
+                ================================= */
+
+                loginProcessing.classList.add(
+                    "show"
+                );
+
+                processingTitle.textContent =
+                    "Logging you in...";
+
+                processingText.textContent =
+                    "Please wait while we verify your details.";
+
+                loadingCircle.style.display =
+                    "block";
+
+                successIcon.style.display =
+                    "none";
+
+
+                /* ================================
+                   SIMULATE LOGIN
+                ================================= */
+
+                setTimeout(
+                    function () {
+
+                        /* HIDE LOADER */
+
+                        loadingCircle.style.display =
+                            "none";
+
+
+                        /* SHOW SUCCESS */
+
+                        successIcon.style.display =
+                            "flex";
+
+                        loginProcessing.classList.add(
+                            "success"
+                        );
+
+
+                        processingTitle.textContent =
+                            "Login Successful!";
+
+                        processingText.textContent =
+                            "Taking you to your food page...";
+
+
+                        /* ================================
+                           REDIRECT
+                        ================================= */
+
+                        setTimeout(
+                            function () {
+
+                                window.location.href =
+                                    "order.html";
+
+                            },
+                            1500
+                        );
+
+                    },
+                    2500
+                );
+
+            }
+        );
+
+
+        /* ================================
+           ENTER KEY SUPPORT
+        ================================= */
+
+        passwordInput.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (event.key === "Enter") {
+
+                    loginForm.requestSubmit();
+
+                }
+
+            }
+        );
+
+
+        /* ================================
+           PAGE LOAD ANIMATION
+        ================================= */
+
+        window.addEventListener(
+            "load",
+            function () {
+
+                document.body.classList.add(
+                    "page-loaded"
+                );
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>
+

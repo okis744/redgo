@@ -1,0 +1,1928 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fff;
+    color: #171717;
+    overflow-x: hidden;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.header {
+    min-height: 78px;
+    padding: 15px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    z-index: 20;
+}
+
+.logo {
+    width: 130px;
+}
+
+.logo img {
+    width: 100%;
+    height: 45px;
+    object-fit: contain;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.navbar a {
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+    transition: .3s ease;
+}
+
+.navbar a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 0;
+    height: 2px;
+    background: #e51b23;
+    transition: .3s ease;
+}
+
+.navbar a:hover {
+    color: #e51b23;
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icon-btn {
+    width: 42px;
+    height: 42px;
+    border: 1px solid #eee;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s ease;
+}
+
+.icon-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+}
+
+.icon-btn img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.login-btn {
+    border: none;
+    background: #171717;
+    color: #fff;
+    padding: 12px 23px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: .3s ease;
+}
+
+.login-btn:hover {
+    background: #e51b23;
+    transform: translateY(-3px);
+}
+
+.hero {
+    min-height: 720px;
+    padding: 80px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 80% 45%, rgba(229, 27, 35, .10), transparent 28%),
+        linear-gradient(135deg, #fff 0%, #fff8f4 55%, #fff 100%);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    right: -180px;
+    top: -150px;
+    border-radius: 50%;
+    background: rgba(229, 27, 35, .04);
+}
+
+.hero-content {
+    width: 50%;
+    max-width: 650px;
+    position: relative;
+    z-index: 5;
+    animation: heroText .8s ease forwards;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 15px;
+    border-radius: 30px;
+    background: #fff0ee;
+    color: #e51b23;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+    margin-bottom: 22px;
+}
+
+.badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #e51b23;
+    box-shadow: 0 0 0 5px rgba(229, 27, 35, .10);
+}
+
+.hero h1 {
+    font-size: clamp(48px, 6vw, 78px);
+    line-height: .98;
+    letter-spacing: -4px;
+    max-width: 680px;
+    margin-bottom: 26px;
+}
+
+.hero h1 span {
+    display: block;
+    color: #e51b23;
+}
+
+.hero-content > p {
+    max-width: 560px;
+    color: #686868;
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+}
+
+.hero-search {
+    width: 100%;
+    max-width: 630px;
+    min-height: 76px;
+    padding: 8px;
+    background: #fff;
+    border: 1px solid #f1eeee;
+    border-radius: 45px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .10);
+    animation: searchAppear 1s ease .2s both;
+}
+
+.location-box {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 0 18px;
+}
+
+.location-icon {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #fff0ee;
+    color: #e51b23;
+}
+
+.location-input {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.location-input label {
+    color: #999;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.location-input input {
+    width: 100%;
+    min-width: 0;
+    border: none;
+    outline: none;
+    color: #222;
+    font-size: 14px;
+    background: transparent;
+}
+
+.location-input input::placeholder {
+    color: #777;
+}
+
+.find-food-btn {
+    border: none;
+    background: #e51b23;
+    color: #fff;
+    padding: 16px 23px;
+    border-radius: 35px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    transition: .3s ease;
+    white-space: nowrap;
+}
+
+.find-food-btn i {
+    font-size: 13px;
+    transition: .3s ease;
+}
+
+.find-food-btn:hover {
+    background: #171717;
+    transform: translateY(-2px);
+}
+
+.find-food-btn:hover i {
+    transform: translateX(4px);
+}
+
+.hero-info {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-top: 35px;
+}
+
+.hero-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hero-stat strong {
+    font-size: 23px;
+    line-height: 1;
+}
+
+.hero-stat span {
+    color: #777;
+    font-size: 12px;
+}
+
+.hero-divider {
+    width: 1px;
+    height: 38px;
+    background: #ddd;
+}
+
+.hero-visual {
+    width: 47%;
+    max-width: 620px;
+    height: 590px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: heroImageEnter 1s ease forwards;
+}
+
+.hero-glow {
+    position: absolute;
+    width: 480px;
+    height: 480px;
+    border-radius: 50%;
+    background: rgba(229, 27, 35, .08);
+    filter: blur(2px);
+}
+
+.food-circle {
+    width: 500px;
+    height: 500px;
+    position: relative;
+    z-index: 2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle-ring {
+    position: absolute;
+    inset: 15px;
+    border: 2px dashed rgba(229, 27, 35, .25);
+    border-radius: 50%;
+    animation: rotateRing 22s linear infinite;
+}
+
+.food-circle img {
+    width: 450px;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 14px solid #fff;
+    box-shadow: 0 35px 80px rgba(0, 0, 0, .20);
+    animation: burgerFloat 5s ease-in-out infinite;
+}
+
+.delivery-card,
+.rating-card {
+    position: absolute;
+    z-index: 5;
+    background: rgba(255, 255, 255, .96);
+    border: 1px solid rgba(255, 255, 255, .8);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, .13);
+    backdrop-filter: blur(12px);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.delivery-card {
+    left: 0;
+    bottom: 105px;
+    padding: 13px 18px 13px 13px;
+    gap: 12px;
+    animation: cardFloat 4s ease-in-out infinite;
+}
+
+.delivery-card strong,
+.rating-card strong {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.delivery-card span,
+.rating-card span {
+    display: block;
+    color: #888;
+    font-size: 11px;
+}
+
+.delivery-icon,
+.rating-star {
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delivery-icon {
+    color: #fff;
+    background: #e51b23;
+}
+
+.rating-star {
+    color: #fff;
+    background: #171717;
+}
+
+.rating-card {
+    right: 0;
+    top: 115px;
+    padding: 13px 18px 13px 13px;
+    gap: 12px;
+    animation: cardFloat 4s ease-in-out 1s infinite;
+}
+
+.floating-dot {
+    position: absolute;
+    border-radius: 50%;
+    background: #e51b23;
+}
+
+.dot-one {
+    width: 12px;
+    height: 12px;
+    top: 80px;
+    left: 80px;
+    animation: dotMove 3s ease-in-out infinite;
+}
+
+.dot-two {
+    width: 8px;
+    height: 8px;
+    right: 55px;
+    bottom: 150px;
+    background: #ffb000;
+    animation: dotMove 4s ease-in-out infinite reverse;
+}
+
+.dot-three {
+    width: 18px;
+    height: 18px;
+    right: 80px;
+    top: 70px;
+    background: rgba(229, 27, 35, .25);
+    animation: dotMove 5s ease-in-out infinite;
+}
+
+.section {
+    padding: 90px 7%;
+}
+
+.section-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 35px;
+}
+
+.section-heading span {
+    color: #e51b23;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.section-heading h2 {
+    font-size: 38px;
+    line-height: 1.1;
+    margin-top: 8px;
+}
+
+.section-heading > a {
+    color: #e51b23;
+    font-weight: 700;
+    transition: .3s ease;
+}
+
+.section-heading > a i {
+    margin-left: 7px;
+    transition: .3s ease;
+}
+
+.section-heading > a:hover {
+    transform: translateX(5px);
+}
+
+.section-heading > a:hover i {
+    transform: translateX(4px);
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 18px;
+}
+
+.category-card {
+    text-align: center;
+    cursor: pointer;
+    transition: .35s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-9px);
+}
+
+.category-image {
+    width: 100%;
+    height: 150px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #f4f4f4;
+    margin-bottom: 13px;
+}
+
+.category-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .5s ease;
+}
+
+.category-card:hover .category-image img {
+    transform: scale(1.08);
+}
+
+.category-card h3 {
+    font-size: 16px;
+}
+
+.restaurants {
+    background: #fafafa;
+}
+
+.restaurant-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.restaurant-card {
+    background: #fff;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, .06);
+    transition: .35s ease;
+}
+
+.restaurant-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .12);
+}
+
+.restaurant-image {
+    height: 230px;
+    position: relative;
+    overflow: hidden;
+    background: #eee;
+}
+
+.restaurant-image > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .6s ease;
+}
+
+.restaurant-card:hover .restaurant-image > img {
+    transform: scale(1.07);
+}
+
+.discount {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #e51b23;
+    color: #fff;
+    padding: 7px 11px;
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.favorite {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s ease;
+}
+
+.favorite:hover {
+    color: #e51b23;
+    transform: scale(1.1);
+}
+
+.restaurant-info {
+    padding: 18px;
+}
+
+.rating {
+    color: #f49b00;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.restaurant-info h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.restaurant-info p {
+    color: #777;
+    font-size: 13px;
+}
+
+.delivery {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 17px;
+    color: #555;
+    font-size: 12px;
+}
+
+.delivery i {
+    margin-right: 4px;
+}
+
+.promo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    background: #171717;
+    color: #fff;
+    margin: 0 7%;
+    padding: 70px;
+    border-radius: 35px;
+    overflow: hidden;
+}
+
+.promo-content {
+    width: 50%;
+}
+
+.promo-content > span {
+    color: #ffb000;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.promo-content h2 {
+    font-size: 45px;
+    line-height: 1.1;
+    margin: 15px 0;
+}
+
+.promo-content h2 strong {
+    color: #e51b23;
+}
+
+.promo-content p {
+    color: #bbb;
+    max-width: 500px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.promo-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    background: #e51b23;
+    color: #fff;
+    padding: 14px 25px;
+    border-radius: 30px;
+    font-weight: 700;
+    transition: .3s ease;
+}
+
+.promo-btn:hover {
+    transform: translateY(-4px);
+    background: #fff;
+    color: #171717;
+}
+
+.promo-btn i {
+    transition: .3s ease;
+}
+
+.promo-btn:hover i {
+    transform: translateX(4px);
+}
+
+.promo-image {
+    width: 43%;
+    height: 300px;
+}
+
+.promo-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    animation: promoFloat 4s ease-in-out infinite;
+}
+
+.app-section {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+.app-image {
+    width: 45%;
+    height: 500px;
+    background: #f6f6f6;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.app-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .6s ease;
+}
+
+.app-image:hover img {
+    transform: scale(1.06);
+}
+
+.app-content {
+    flex: 1;
+}
+
+.app-content > span {
+    color: #e51b23;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.app-content h2 {
+    font-size: 45px;
+    line-height: 1.1;
+    margin: 15px 0 20px;
+}
+
+.app-content p {
+    color: #666;
+    max-width: 500px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.app-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.store-btn {
+    width: 160px;
+    transition: .3s ease;
+}
+
+.store-btn:hover {
+    transform: translateY(-5px);
+}
+
+.store-btn img {
+    width: 100%;
+    height: 52px;
+    object-fit: contain;
+}
+
+.footer {
+    background: #111;
+    color: #fff;
+    padding: 70px 7% 25px;
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 50px;
+    padding-bottom: 50px;
+}
+
+.footer-brand > img {
+    width: 130px;
+    height: 45px;
+    object-fit: cover;
+}
+
+.footer-brand p {
+    color: #aaa;
+    max-width: 280px;
+    line-height: 1.7;
+    margin: 15px 0 20px;
+}
+
+.socials {
+    display: flex;
+    gap: 10px;
+}
+
+.socials a {
+    width: 38px;
+    height: 38px;
+    background: #222;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s ease;
+}
+
+.socials a:hover {
+    transform: translateY(-5px);
+    background: #e51b23;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-column h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.footer-column a {
+    color: #aaa;
+    font-size: 14px;
+    transition: .3s ease;
+}
+
+.footer-column a:hover {
+    color: #fff;
+    transform: translateX(4px);
+}
+
+.footer-bottom {
+    border-top: 1px solid #292929;
+    padding-top: 22px;
+    color: #777;
+    font-size: 13px;
+}
+
+@keyframes heroText {
+    from {
+        opacity: 0;
+        transform: translateX(-45px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes heroImageEnter {
+    from {
+        opacity: 0;
+        transform: translateX(60px) scale(.92);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes burgerFloat {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-13px) rotate(1deg);
+    }
+}
+
+@keyframes cardFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes rotateRing {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dotMove {
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(8px, -12px);
+    }
+}
+
+@keyframes promoFloat {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(2deg);
+    }
+}
+
+@media (max-width: 1100px) {
+    .navbar {
+        gap: 18px;
+    }
+
+    .hero {
+        gap: 25px;
+    }
+
+    .hero-content {
+        width: 52%;
+    }
+
+    .hero-visual {
+        width: 48%;
+        height: 520px;
+    }
+
+    .food-circle {
+        width: 400px;
+        height: 400px;
+    }
+
+    .food-circle img {
+        width: 360px;
+        height: 360px;
+    }
+
+    .hero-glow {
+        width: 400px;
+        height: 400px;
+    }
+
+    .rating-card {
+        right: -5px;
+    }
+
+    .delivery-card {
+        left: -5px;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .restaurant-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero h1 {
+        font-size: 55px;
+    }
+}
+
+@media (max-width: 850px) {
+    .header {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .navbar {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        overflow-x: auto;
+        padding-bottom: 5px;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 65px 5% 80px;
+    }
+
+    .hero-content {
+        width: 100%;
+        max-width: 700px;
+    }
+
+    .hero-badge {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-content > p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-search {
+        margin: auto;
+    }
+
+    .hero-info {
+        justify-content: center;
+    }
+
+    .hero-visual {
+        width: 100%;
+        height: 520px;
+        max-width: 600px;
+    }
+
+    .promo {
+        flex-direction: column;
+        margin: 0 4%;
+        padding: 50px 30px;
+        text-align: center;
+    }
+
+    .promo-content {
+        width: 100%;
+    }
+
+    .promo-content p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .promo-image {
+        width: 80%;
+    }
+
+    .app-section {
+        flex-direction: column;
+    }
+
+    .app-image {
+        width: 100%;
+    }
+
+    .app-content {
+        text-align: center;
+    }
+
+    .app-content p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .app-buttons {
+        justify-content: center;
+    }
+
+    .footer-top {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .header {
+        padding: 13px 5%;
+    }
+
+    .logo {
+        width: 105px;
+    }
+
+    .header-actions .icon-btn {
+        display: none;
+    }
+
+    .login-btn {
+        padding: 10px 17px;
+    }
+
+    .navbar {
+        justify-content: flex-start;
+        gap: 25px;
+    }
+
+    .hero {
+        padding: 50px 5% 70px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+        letter-spacing: -2.5px;
+    }
+
+    .hero-content > p {
+        font-size: 15px;
+    }
+
+    .hero-search {
+        flex-direction: column;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        gap: 10px;
+        padding: 0;
+    }
+
+    .location-box {
+        width: 100%;
+        min-height: 65px;
+        background: #fff;
+        border-radius: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+    }
+
+    .find-food-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero-info {
+        gap: 12px;
+    }
+
+    .hero-stat strong {
+        font-size: 18px;
+    }
+
+    .hero-stat span {
+        font-size: 10px;
+    }
+
+    .hero-divider {
+        height: 32px;
+    }
+
+    .hero-visual {
+        height: 390px;
+    }
+
+    .food-circle {
+        width: 320px;
+        height: 320px;
+    }
+
+    .food-circle img {
+        width: 290px;
+        height: 290px;
+        border-width: 9px;
+    }
+
+    .hero-glow {
+        width: 320px;
+        height: 320px;
+    }
+
+    .circle-ring {
+        inset: 7px;
+    }
+
+    .delivery-card {
+        left: 0;
+        bottom: 40px;
+        transform: scale(.88);
+    }
+
+    .rating-card {
+        right: 0;
+        top: 35px;
+        transform: scale(.88);
+    }
+
+    .dot-one {
+        left: 25px;
+        top: 20px;
+    }
+
+    .dot-two {
+        right: 20px;
+        bottom: 80px;
+    }
+
+    .dot-three {
+        right: 30px;
+        top: 25px;
+    }
+
+    .section {
+        padding: 65px 5%;
+    }
+
+    .section-heading {
+        margin-bottom: 25px;
+    }
+
+    .section-heading h2 {
+        font-size: 30px;
+    }
+
+    .section-heading > a {
+        display: none;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px 15px;
+    }
+
+    .category-image {
+        height: 135px;
+    }
+
+    .restaurant-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .restaurant-image {
+        height: 245px;
+    }
+
+    .promo {
+        border-radius: 25px;
+    }
+
+    .promo-content h2 {
+        font-size: 34px;
+    }
+
+    .promo-image {
+        height: 230px;
+    }
+
+    .app-content h2 {
+        font-size: 35px;
+    }
+
+    .app-image {
+        height: 400px;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .footer {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
+```css
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #ffffff;
+    color: #171717;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+
+/* =========================
+   LOGIN PAGE
+========================= */
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+}
+
+
+/* =========================
+   LEFT IMAGE
+========================= */
+
+.login-image {
+    width: 50%;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s ease;
+}
+
+.login-image:hover img {
+    transform: scale(1.04);
+}
+
+.image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(229, 27, 35, 0.85),
+        rgba(0, 0, 0, 0.35)
+    );
+}
+
+.image-content {
+    position: absolute;
+    inset: 0;
+    padding: 45px 55px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logo,
+.mobile-logo {
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.logo span,
+.mobile-logo span {
+    color: #e51b23;
+}
+
+.image-content .logo {
+    color: white;
+}
+
+.image-text {
+    max-width: 520px;
+    padding-bottom: 40px;
+}
+
+.small-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+
+.image-text h1 {
+    font-size: clamp(40px, 5vw, 70px);
+    line-height: 1.05;
+    margin-bottom: 22px;
+}
+
+.image-text > p:last-child {
+    font-size: 17px;
+    line-height: 1.7;
+    max-width: 450px;
+    color: rgba(255,255,255,0.9);
+}
+
+
+/* =========================
+   RIGHT LOGIN SECTION
+========================= */
+
+.login-section {
+    width: 50%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background: #ffffff;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 460px;
+    animation: loginBoxAppear 0.7s ease;
+}
+
+@keyframes loginBoxAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mobile-logo {
+    display: none;
+}
+
+.welcome {
+    margin-bottom: 30px;
+}
+
+.welcome p {
+    color: #e51b23;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.welcome h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.welcome span {
+    color: #777;
+    font-size: 15px;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.login-form {
+    width: 100%;
+}
+
+.input-group {
+    margin-bottom: 22px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 9px;
+}
+
+.input-box {
+    height: 58px;
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.input-box:focus-within {
+    border-color: #e51b23;
+    box-shadow: 0 0 0 4px rgba(229, 27, 35, 0.08);
+}
+
+.input-icon {
+    width: 58px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-icon img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+.input-box input {
+    flex: 1;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    padding-right: 15px;
+    color: #171717;
+}
+
+.input-box input::placeholder {
+    color: #999;
+}
+
+
+/* =========================
+   OPTIONS
+========================= */
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 0 25px;
+    font-size: 13px;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #555;
+}
+
+.remember input {
+    accent-color: #e51b23;
+}
+
+.options a {
+    color: #e51b23;
+    font-weight: 600;
+}
+
+.options a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   LOGIN BUTTON
+========================= */
+
+.login-button {
+    width: 100%;
+    height: 58px;
+    border: none;
+    border-radius: 12px;
+    background: #e51b23;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+}
+
+.login-button:hover {
+    background: #171717;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.login-button:active {
+    transform: translateY(0);
+}
+
+.arrow {
+    font-size: 22px;
+    transition: transform 0.3s ease;
+}
+
+.login-button:hover .arrow {
+    transform: translateX(5px);
+}
+
+
+/* =========================
+   DIVIDER
+========================= */
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 28px 0;
+}
+
+.divider span {
+    flex: 1;
+    height: 1px;
+    background: #eeeeee;
+}
+
+.divider p {
+    font-size: 12px;
+    font-weight: 700;
+    color: #999;
+}
+
+
+/* =========================
+   CREATE ACCOUNT
+========================= */
+
+.create-account {
+    display: block;
+    width: 100%;
+    height: 54px;
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #171717;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.create-account:hover {
+    border-color: #e51b23;
+    color: #e51b23;
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   TERMS
+========================= */
+
+.terms {
+    margin-top: 22px;
+    color: #888;
+    font-size: 12px;
+    line-height: 1.7;
+    text-align: center;
+}
+
+.terms a {
+    color: #e51b23;
+}
+
+
+/* =========================
+   BACK HOME
+========================= */
+
+.back-home {
+    display: block;
+    margin-top: 25px;
+    text-align: center;
+    color: #555;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.back-home:hover {
+    color: #e51b23;
+}
+
+
+/* =========================
+   LOGIN PROCESSING SCREEN
+========================= */
+
+.login-processing {
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.97);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+.login-processing.show {
+    display: flex;
+}
+
+.processing-box {
+    width: 90%;
+    max-width: 380px;
+    padding: 40px 30px;
+    background: #ffffff;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    animation: processingAppear 0.4s ease;
+}
+
+@keyframes processingAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+
+.loading-circle {
+    width: 65px;
+    height: 65px;
+    border: 5px solid #eeeeee;
+    border-top: 5px solid #e51b23;
+    border-right: 5px solid #e51b23;
+    border-radius: 50%;
+    margin: 0 auto 22px;
+
+
+    animation: rotate360 1s linear infinite;
+}
+
+
+
+
+@keyframes rotate360 {
+
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+
+.processing-box h3 {
+    font-size: 22px;
+    color: #171717;
+    margin-bottom: 8px;
+}
+
+.processing-box p {
+    color: #777777;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   SUCCESS STATE
+========================= */
+
+.login-processing.success .loading-circle {
+    width: 65px;
+    height: 65px;
+    border: none;
+    background: #e51b23;
+    position: relative;
+
+    /*
+       Stop the 360° animation
+       when login is successful
+    */
+
+    animation: none;
+
+    transform: scale(1);
+}
+
+
+/* =========================
+   SUCCESS CHECK MARK
+========================= */
+
+.login-processing.success .loading-circle::after {
+    content: "✓";
+    position: absolute;
+    color: #ffffff;
+    font-size: 35px;
+    font-weight: bold;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+/* SUCCESS TEXT */
+
+.login-processing.success .processing-box h3 {
+    color: #e51b23;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 900px) {
+
+    .login-page {
+        display: block;
+    }
+
+    .login-image {
+        display: none;
+    }
+
+    .login-section {
+        width: 100%;
+        min-height: 100vh;
+        padding: 30px 20px;
+    }
+
+    .mobile-logo {
+        display: block;
+        color: #171717;
+        margin-bottom: 50px;
+        text-align: center;
+    }
+
+    .mobile-logo span {
+        color: #e51b23;
+    }
+
+    .welcome h2 {
+        font-size: 32px;
+    }
+
+}
+
+
+
+@media (max-width: 480px) {
+
+    .login-section {
+        padding: 25px 16px;
+    }
+
+    .mobile-logo {
+        margin-bottom: 35px;
+    }
+
+    .welcome h2 {
+        font-size: 28px;
+    }
+
+    .welcome span {
+        font-size: 14px;
+    }
+
+    .input-box {
+        height: 55px;
+    }
+
+    .login-button {
+        height: 55px;
+    }
+
+    .processing-box {
+        padding: 35px 22px;
+    }
+
+}

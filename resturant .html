@@ -1,0 +1,865 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GO DELIVERY | Restaurant</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#fff;
+    color:#222;
+    overflow-x:hidden;
+}
+
+
+header{
+    background:#e51b23;
+    color:#fff;
+    padding:20px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    transition:all .4s ease;
+}
+
+header:hover{
+    box-shadow:0 8px 25px rgba(0,0,0,.18);
+}
+
+.logo{
+    font-size:28px;
+    font-weight:800;
+    transition:all .3s ease;
+}
+
+.logo:hover{
+    transform:scale(1.05);
+}
+
+nav{
+    display:flex;
+    gap:30px;
+}
+
+nav a{
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    position:relative;
+    transition:all .3s ease;
+}
+
+nav a:hover{
+    transform:translateY(-2px);
+}
+
+nav a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0;
+    height:2px;
+    background:#fff;
+    transition:width .3s ease;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:85vh;
+    background:#e51b23;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:70px 7%;
+    gap:40px;
+}
+
+.hero-text{
+    max-width:550px;
+    animation:fadeInLeft 1s ease forwards;
+}
+
+.hero h1{
+    font-size:65px;
+    line-height:1.05;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:19px;
+    line-height:1.7;
+    margin-bottom:30px;
+}
+
+.btn{
+    display:inline-block;
+    background:#fff;
+    color:#e51b23;
+    padding:15px 30px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:all .3s ease;
+}
+
+.btn:hover{
+    transform:translateY(-4px) scale(1.03);
+    box-shadow:0 10px 25px rgba(255,255,255,.25);
+}
+
+.hero-image{
+    width:430px;
+    height:430px;
+    border-radius:50%;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    animation:floatFood 4s ease-in-out infinite;
+    transition:transform .4s ease;
+}
+
+.hero-image:hover{
+    transform:scale(1.04);
+}
+
+.hero-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* ================= ABOUT ================= */
+
+section{
+    padding:80px 7%;
+}
+
+.about{
+    display:flex;
+    align-items:center;
+    gap:60px;
+}
+
+.about-image{
+    flex:1;
+    transition:transform .5s ease;
+    overflow:hidden;
+    border-radius:20px;
+}
+
+.about-image img{
+    width:100%;
+    height:380px;
+    object-fit:cover;
+    border-radius:20px;
+    transition:transform .6s ease;
+}
+
+.about-image:hover img{
+    transform:scale(1.06);
+}
+
+.about-text{
+    flex:1;
+    animation:fadeInRight 1s ease forwards;
+}
+
+.about-text h2{
+    color:#e51b23;
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+.about-text p{
+    line-height:1.8;
+    font-size:17px;
+}
+
+/* ================= SECTION TITLE ================= */
+
+.section-title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-title h2{
+    color:#e51b23;
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+/* ================= DISHES ================= */
+
+.dishes{
+    background:#fff;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.card{
+    border:2px solid #e51b23;
+    border-radius:18px;
+    overflow:hidden;
+    background:#fff;
+    transition:transform .35s ease,box-shadow .35s ease;
+    animation:fadeUp .8s ease both;
+}
+
+.card:nth-child(2){
+    animation-delay:.15s;
+}
+
+.card:nth-child(3){
+    animation-delay:.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 35px rgba(229,27,35,.18);
+}
+
+/* Food image link */
+
+.food-image-link{
+    display:block;
+    overflow:hidden;
+}
+
+.card img{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+    transition:transform .5s ease;
+}
+
+.card:hover img{
+    transform:scale(1.06);
+}
+
+.card-content{
+    padding:22px;
+}
+
+.card h3{
+    color:#e51b23;
+    font-size:23px;
+    margin-bottom:10px;
+}
+
+.price{
+    font-size:21px;
+    font-weight:bold;
+}
+
+/* ================= AVERAGE ================= */
+
+.average{
+    background:#e51b23;
+    color:#fff;
+    text-align:center;
+}
+
+.average h2{
+    font-size:45px;
+    margin-bottom:15px;
+    animation:pulsePrice 2.5s ease-in-out infinite;
+}
+
+.average p{
+    font-size:18px;
+}
+
+/* ================= REVIEWS ================= */
+
+.reviews{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.review{
+    border:1px solid #e51b23;
+    padding:30px;
+    border-radius:15px;
+    transition:transform .35s ease,box-shadow .35s ease;
+}
+
+.review:hover{
+    transform:translateY(-7px);
+    box-shadow:0 12px 30px rgba(229,27,35,.12);
+}
+
+.review p{
+    line-height:1.7;
+    margin-bottom:15px;
+}
+
+.stars{
+    color:#e51b23;
+    font-size:20px;
+    transition:letter-spacing .3s ease;
+}
+
+.review:hover .stars{
+    letter-spacing:3px;
+}
+
+/* ================= CONTACT ================= */
+
+.contact{
+    background:#e51b23;
+    color:#fff;
+    text-align:center;
+}
+
+.contact h2{
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+.contact p{
+    margin:10px 0;
+    transition:transform .3s ease;
+}
+
+.contact p:hover{
+    transform:translateX(5px);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#fff;
+    color:#e51b23;
+    text-align:center;
+    padding:25px;
+    border-top:2px solid #e51b23;
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes fadeInLeft{
+
+    from{
+        opacity:0;
+        transform:translateX(-60px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+@keyframes fadeInRight{
+
+    from{
+        opacity:0;
+        transform:translateX(60px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(35px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes floatFood{
+
+    0%,100%{
+        transform:translateY(0) rotate(0deg);
+    }
+
+    50%{
+        transform:translateY(-15px) rotate(2deg);
+    }
+}
+
+@keyframes pulsePrice{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.05);
+    }
+}
+
+/* ================= TABLET / MOBILE ================= */
+
+@media(max-width:800px){
+
+    header{
+        flex-direction:column;
+        gap:15px;
+        padding:20px 5%;
+    }
+
+    nav{
+        gap:15px;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+        padding-top:60px;
+    }
+
+    .hero h1{
+        font-size:45px;
+    }
+
+    .hero p{
+        font-size:17px;
+    }
+
+    .hero-image{
+        width:280px;
+        height:280px;
+    }
+
+    .about{
+        flex-direction:column;
+        gap:35px;
+    }
+
+    .about-image,
+    .about-text{
+        width:100%;
+    }
+
+    .about-text{
+        text-align:center;
+    }
+
+    .cards,
+    .reviews{
+        grid-template-columns:1fr;
+    }
+
+    .card img{
+        height:280px;
+    }
+}
+
+@media(max-width:480px){
+
+    .logo{
+        font-size:24px;
+    }
+
+    nav{
+        gap:12px;
+    }
+
+    nav a{
+        font-size:14px;
+    }
+
+    .hero{
+        padding:55px 5%;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .hero p{
+        font-size:16px;
+        line-height:1.6;
+    }
+
+    .hero-image{
+        width:240px;
+        height:240px;
+    }
+
+    .section-title h2{
+        font-size:34px;
+    }
+
+    .about-image img{
+        height:280px;
+    }
+
+    .card img{
+        height:230px;
+    }
+
+    .average h2{
+        font-size:40px;
+    }
+
+    .contact h2{
+        font-size:34px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <div class="logo">
+        DfS BUGER
+    </div>
+
+    <nav>
+
+        <a href="http://127.0.0.1:5500/index.html">
+            Home
+        </a>
+
+        <a href="#about">
+            About
+        </a>
+
+        <a href="#menu">
+            Menu
+        </a>
+
+        <a href="#reviews">
+            Reviews
+        </a>
+
+        <a href="#contact">
+            Contact
+        </a>
+
+    </nav>
+
+</header>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-text">
+
+        <h1>
+            Great Food.<br>
+            Fast Delivery.
+        </h1>
+
+        <p>
+            Welcome to DfS BUGER, where delicious meals,
+            quality ingredients and fast service come together.
+        </p>
+
+        <a href="#contact" class="btn">
+            Reserve Table
+        </a>
+
+    </div>
+
+    <div class="hero-image">
+
+        <img
+            src="./images/download (9).jpg"
+            alt="Delicious food">
+
+    </div>
+
+</section>
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about">
+
+    <div class="about">
+
+        <div class="about-image">
+
+            <img
+                src="./images/Dreamy Ice Cream Delight.jpg"
+                alt="Restaurant food">
+
+        </div>
+
+        <div class="about-text">
+
+            <h2>
+                About DfS BUGER
+            </h2>
+
+            <p>
+                DfS BUGER brings tasty, freshly prepared meals directly
+                to your table or doorstep. We focus on great taste,
+                excellent service and meals made with quality ingredients.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= DISHES ================= -->
+
+<section class="dishes" id="menu">
+
+    <div class="section-title">
+
+        <h2>
+            Popular Dishes
+        </h2>
+
+        <p>
+            Some of our customers' favourites
+        </p>
+
+    </div>
+
+    <div class="cards">
+
+        <!-- FOOD 1 -->
+
+        <div class="card">
+
+            <a href="order.html" class="food-image-link">
+
+                <img
+                    src="./images/Chicken and chips.jpg"
+                    alt="Classic Burger">
+
+            </a>
+
+            <div class="card-content">
+
+                <h3>
+                    Classic Burger
+                </h3>
+
+                <p class="price">
+                    ₦8,500
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- FOOD 2 -->
+
+        <div class="card">
+
+            <a href="order.html" class="food-image-link">
+
+                <img
+                    src="./images/Hamburger.jpg"
+                    alt="Special Pasta">
+
+            </a>
+
+            <div class="card-content">
+
+                <h3>
+                    Special Pasta
+                </h3>
+
+                <p class="price">
+                    ₦10,000
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- FOOD 3 -->
+
+        <div class="card">
+
+            <a href="order.html" class="food-image-link">
+
+                <img
+                    src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80"
+                    alt="Fresh Pizza">
+
+            </a>
+
+            <div class="card-content">
+
+                <h3>
+                    Fresh Pizza
+                </h3>
+
+                <p class="price">
+                    ₦12,000
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= AVERAGE PRICE ================= -->
+
+<section class="average">
+
+    <h2>
+        ₦10,167
+    </h2>
+
+    <p>
+        Average price per meal
+    </p>
+
+</section>
+
+<!-- ================= REVIEWS ================= -->
+
+<section id="reviews">
+
+    <div class="section-title">
+
+        <h2>
+            What Our Customers Say
+        </h2>
+
+    </div>
+
+    <div class="reviews">
+
+        <div class="review">
+
+            <p>
+                "The food was delicious and arrived quickly.
+                Definitely ordering again!"
+            </p>
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <strong>
+                — Daniel
+            </strong>
+
+        </div>
+
+        <div class="review">
+
+            <p>
+                "Great service and the portions were generous.
+                GO DELIVERY is now one of my favourites."
+            </p>
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <strong>
+                — Amaka
+            </strong>
+
+        </div>
+
+        <div class="review">
+
+            <p>
+                "Fresh food, beautiful presentation and excellent
+                customer service."
+            </p>
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <strong>
+                — Tunde
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= CONTACT ================= -->
+
+<section class="contact" id="contact">
+
+    <h2>
+        Contact GO DELIVERY
+    </h2>
+
+    <p>
+        📍 Lagos, Nigeria
+    </p>
+
+    <p>
+        📞 +234 800 000 0000
+    </p>
+
+    <p>
+        ✉ info@godelivery.com
+    </p>
+
+    <p>
+        Open daily: 10:00 AM – 10:00 PM
+    </p>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+        © 2026 GO DELIVERY. All Rights Reserved.
+    </p>
+
+</footer>
+
+</body>
+</html>

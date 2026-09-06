@@ -1,0 +1,1577 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Find Me | REDGO</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #fff;
+            color: #171717;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input {
+            font-family: inherit;
+        }
+
+        :root {
+            --red: #e30613;
+            --orange: #FFA500;
+            --dark: #171717;
+            --light: #f8f8f8;
+            --gray: #666;
+            --border: #e8e8e8;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            width: 100%;
+            min-height: 75px;
+            padding: 15px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--red);
+            font-size: 27px;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--dark);
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--dark);
+            color: #fff;
+            padding: 11px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 700;
+            transition: .3s ease;
+        }
+
+        .back-home:hover {
+            background: var(--red);
+            transform: translateY(-2px);
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 480px;
+            padding: 75px 6%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background:
+                radial-gradient(circle at 10% 20%, rgba(227, 6, 19, .10), transparent 30%),
+                radial-gradient(circle at 90% 80%, rgba(255, 165, 0, .10), transparent 30%),
+                #fff;
+        }
+
+        .hero-content {
+            width: 100%;
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+            animation: heroAppear .9s ease forwards;
+        }
+
+        .hero-small {
+            color: var(--red);
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 6vw, 70px);
+            line-height: 1.05;
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        .hero h1 span {
+            color: var(--red);
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: 0 auto 35px;
+            color: var(--gray);
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        /* ================= SEARCH ================= */
+
+        .search-wrapper {
+            width: 100%;
+            max-width: 720px;
+            margin: auto;
+        }
+
+        .search-box {
+            width: 100%;
+            min-height: 65px;
+            padding: 7px;
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            box-shadow: 0 15px 40px rgba(0,0,0,.10);
+            transition: .3s ease;
+        }
+
+        .search-box:focus-within {
+            border-color: var(--red);
+            box-shadow: 0 15px 45px rgba(227,6,19,.15);
+            transform: translateY(-2px);
+        }
+
+        .search-icon {
+            width: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--red);
+            font-size: 21px;
+        }
+
+        .search-box input {
+            flex: 1;
+            height: 50px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            color: #222;
+            min-width: 0;
+        }
+
+        .search-box input::placeholder {
+            color: #999;
+        }
+
+        .search-btn {
+            border: none;
+            background: var(--red);
+            color: #fff;
+            padding: 15px 28px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 800;
+            transition: .3s ease;
+        }
+
+        .search-btn:hover {
+            background: var(--dark);
+            transform: scale(1.03);
+        }
+
+        /* ================= QUICK LOCATIONS ================= */
+
+        .quick-locations {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .quick-title {
+            color: #777;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .location-chip {
+            border: 1px solid #ddd;
+            background: #fff;
+            color: #333;
+            padding: 9px 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 700;
+            transition: .3s ease;
+        }
+
+        .location-chip:hover {
+            color: #fff;
+            background: var(--red);
+            border-color: var(--red);
+            transform: translateY(-2px);
+        }
+
+        /* ================= DECORATION ================= */
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: .35;
+            animation: floatingShape 5s ease-in-out infinite;
+        }
+
+        .shape.one {
+            width: 110px;
+            height: 110px;
+            border: 15px solid rgba(227,6,19,.10);
+            left: 5%;
+            top: 15%;
+        }
+
+        .shape.two {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,165,0,.08);
+            right: 8%;
+            top: 20%;
+            animation-delay: 1s;
+        }
+
+        .shape.three {
+            width: 130px;
+            height: 130px;
+            border: 12px solid rgba(227,6,19,.07);
+            right: 4%;
+            bottom: -40px;
+            animation-delay: 2s;
+        }
+
+        /* ================= RESULTS ================= */
+
+        .results-section {
+            background: #fafafa;
+            padding: 70px 6%;
+            min-height: 500px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(28px, 4vw, 42px);
+            margin-bottom: 10px;
+        }
+
+        .section-heading h2 span {
+            color: var(--red);
+        }
+
+        .section-heading p {
+            color: #777;
+            font-size: 15px;
+        }
+
+        .location-result {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .location-result strong {
+            color: var(--red);
+        }
+
+        .restaurant-grid {
+            max-width: 1250px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        /* ================= CARD ================= */
+
+        .restaurant-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #eee;
+            box-shadow: 0 10px 30px rgba(0,0,0,.06);
+            transition: .35s ease;
+            animation: cardAppear .6s ease both;
+        }
+
+        .restaurant-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(0,0,0,.12);
+        }
+
+        .restaurant-image {
+            height: 210px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .restaurant-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: .5s ease;
+        }
+
+        .restaurant-card:hover .restaurant-image img {
+            transform: scale(1.08);
+        }
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 7px 12px;
+            border-radius: 20px;
+            background: var(--red);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .rating {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 7px 11px;
+            border-radius: 20px;
+            background: #fff;
+            color: #222;
+            font-size: 12px;
+            font-weight: 800;
+            box-shadow: 0 4px 15px rgba(0,0,0,.12);
+        }
+
+        .restaurant-content {
+            padding: 22px;
+        }
+
+        .restaurant-content h3 {
+            font-size: 21px;
+            margin-bottom: 7px;
+        }
+
+        .restaurant-type {
+            color: var(--red);
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .restaurant-info {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+            color: #666;
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .restaurant-info div {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .restaurant-info i {
+            color: var(--red);
+            width: 16px;
+            margin-top: 2px;
+        }
+
+        .card-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .order-btn,
+        .direction-btn {
+            border-radius: 10px;
+            padding: 12px 10px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 800;
+            transition: .3s ease;
+        }
+
+        .order-btn {
+            background: var(--red);
+            color: #fff;
+        }
+
+        .order-btn:hover {
+            background: var(--dark);
+        }
+
+        .direction-btn {
+            background: #f3f3f3;
+            color: #222;
+            border: none;
+            cursor: pointer;
+        }
+
+        .direction-btn:hover {
+            background: var(--orange);
+            color: #fff;
+        }
+
+        /* ================= EMPTY MESSAGE ================= */
+
+        .empty-message {
+            display: none;
+            max-width: 650px;
+            margin: 20px auto;
+            text-align: center;
+            padding: 35px;
+            background: #fff;
+            border-radius: 20px;
+            border: 1px solid #eee;
+        }
+
+        .empty-message .icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .empty-message h3 {
+            margin-bottom: 10px;
+        }
+
+        .empty-message p {
+            color: #777;
+            line-height: 1.6;
+        }
+
+        /* ================= MAP BUTTON ================= */
+
+        .map-area {
+            max-width: 1250px;
+            margin: 45px auto 0;
+            padding: 30px;
+            background: #fff;
+            border-radius: 20px;
+            border: 1px solid #eee;
+            text-align: center;
+        }
+
+        .map-area h3 {
+            margin-bottom: 8px;
+        }
+
+        .map-area p {
+            color: #777;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .map-btn {
+            display: inline-block;
+            padding: 13px 24px;
+            background: var(--red);
+            color: #fff;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 800;
+            transition: .3s ease;
+        }
+
+        .map-btn:hover {
+            background: var(--dark);
+            transform: translateY(-2px);
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: var(--dark);
+            color: #fff;
+            padding: 50px 6% 25px;
+        }
+
+        .footer-content {
+            max-width: 1250px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-logo {
+            font-size: 27px;
+            font-weight: 900;
+            color: var(--red);
+            margin-bottom: 15px;
+        }
+
+        .footer-about {
+            color: #aaa;
+            line-height: 1.7;
+            max-width: 400px;
+            font-size: 14px;
+        }
+
+        .footer-column h4 {
+            margin-bottom: 18px;
+            font-size: 16px;
+        }
+
+        .footer-column a {
+            display: block;
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 11px;
+            transition: .3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--red);
+            transform: translateX(4px);
+        }
+
+        .footer-bottom {
+            max-width: 1250px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            text-align: center;
+            color: #777;
+            font-size: 13px;
+        }
+
+        /* ================= ANIMATIONS ================= */
+
+        @keyframes heroAppear {
+            from {
+                opacity: 0;
+                transform: translateY(35px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatingShape {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* ================= TABLET ================= */
+
+        @media (max-width: 1000px) {
+            .restaurant-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-content > div:first-child {
+                grid-column: 1 / -1;
+            }
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 700px) {
+            header {
+                padding: 13px 5%;
+            }
+
+            .logo {
+                font-size: 23px;
+            }
+
+            .back-home {
+                padding: 9px 14px;
+                font-size: 12px;
+            }
+
+            .hero {
+                padding: 60px 5%;
+                min-height: 500px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .search-box {
+                border-radius: 20px;
+                padding: 8px;
+                flex-wrap: wrap;
+            }
+
+            .search-icon {
+                width: 40px;
+            }
+
+            .search-box input {
+                height: 48px;
+            }
+
+            .search-btn {
+                width: 100%;
+                margin-top: 6px;
+            }
+
+            .quick-locations {
+                gap: 7px;
+            }
+
+            .quick-title {
+                width: 100%;
+                margin-bottom: 3px;
+            }
+
+            .results-section {
+                padding: 55px 5%;
+            }
+
+            .restaurant-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .restaurant-image {
+                height: 220px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content > div:first-child {
+                grid-column: auto;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .hero {
+                padding-top: 45px;
+            }
+
+            .restaurant-content {
+                padding: 18px;
+            }
+
+            .card-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .map-area {
+                padding: 25px 18px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <a href="index.html" class="logo">
+            RED<span>GO</span>
+        </a>
+
+        <a href="index.html" class="back-home">
+            ← Back Home
+        </a>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="shape one"></div>
+        <div class="shape two"></div>
+        <div class="shape three"></div>
+
+        <div class="hero-content">
+
+            <div class="hero-small">
+                Find Restaurants
+            </div>
+
+            <h1>
+                Find Restaurants <span>Near You</span>
+            </h1>
+
+            <p>
+                Search your location and discover restaurants around you.
+                Find delicious meals from restaurants in Lekki, Ikeja, Yaba,
+                Abuja, Port Harcourt, Ibadan and other locations.
+            </p>
+
+            <div class="search-wrapper">
+
+                <div class="search-box">
+
+                    <div class="search-icon">
+                        📍
+                    </div>
+
+                    <input
+                        type="text"
+                        id="locationInput"
+                        placeholder="Enter a location e.g. Lekki, Abuja, Ikeja..."
+                        autocomplete="off"
+                    >
+
+                    <button
+                        class="search-btn"
+                        onclick="searchRestaurants()"
+                    >
+                        Search
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="quick-locations">
+
+                <span class="quick-title">
+                    Popular:
+                </span>
+
+                <button class="location-chip" onclick="quickSearch('Lekki')">
+                    Lekki
+                </button>
+
+                <button class="location-chip" onclick="quickSearch('Ikeja')">
+                    Ikeja
+                </button>
+
+                <button class="location-chip" onclick="quickSearch('Yaba')">
+                    Yaba
+                </button>
+
+                <button class="location-chip" onclick="quickSearch('Victoria Island')">
+                    Victoria Island
+                </button>
+
+                <button class="location-chip" onclick="quickSearch('Abuja')">
+                    Abuja
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= RESULTS ================= -->
+
+    <section class="results-section" id="results">
+
+        <div class="section-heading">
+
+            <h2>
+                Restaurants <span>Near You</span>
+            </h2>
+
+            <p>
+                Choose a location above to discover restaurants.
+            </p>
+
+        </div>
+
+        <div class="location-result" id="locationResult">
+            Showing popular restaurants
+        </div>
+
+        <div
+            class="restaurant-grid"
+            id="restaurantGrid"
+        ></div>
+
+
+        <div
+            class="empty-message"
+            id="emptyMessage"
+        >
+
+            <div class="icon">
+                🔍
+            </div>
+
+            <h3>
+                No restaurants found
+            </h3>
+
+            <p>
+                We couldn't find restaurants for that location.
+                Try searching for Lekki, Ikeja, Yaba, Surulere,
+                Victoria Island, Abuja, Port Harcourt or Ibadan.
+            </p>
+
+        </div>
+
+
+        <!-- MAP -->
+
+        <div class="map-area">
+
+            <h3>
+                Explore the Location
+            </h3>
+
+            <p>
+                Open Google Maps to see restaurants and places around your
+                searched location.
+            </p>
+
+            <a
+                href="#"
+                id="mapButton"
+                target="_blank"
+                class="map-btn"
+            >
+                Open Google Maps
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div>
+
+                <div class="footer-logo">
+                    REDGO
+                </div>
+
+                <p class="footer-about">
+                    Find restaurants, discover delicious meals and order
+                    your favorite food quickly and easily with REDGO.
+                </p>
+
+            </div>
+
+            <div class="footer-column">
+
+                <h4>
+                    Quick Links
+                </h4>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="findme.html">
+                    Find Me
+                </a>
+
+                <a href="order.html">
+                    Order Food
+                </a>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </div>
+
+            <div class="footer-column">
+
+                <h4>
+                    Locations
+                </h4>
+
+                <a href="#" onclick="quickSearch('Lekki')">
+                    Lekki
+                </a>
+
+                <a href="#" onclick="quickSearch('Ikeja')">
+                    Ikeja
+                </a>
+
+                <a href="#" onclick="quickSearch('Yaba')">
+                    Yaba
+                </a>
+
+                <a href="#" onclick="quickSearch('Abuja')">
+                    Abuja
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            © 2026 REDGO. All Rights Reserved.
+
+        </div>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /* =========================================
+           RESTAURANT DATABASE
+        ========================================= */
+
+        const restaurants = [
+
+            /* ===== LEKKI ===== */
+
+            {
+                name: "Lekki Grill House",
+                type: "African • Grill • Fast Food",
+                area: "Lekki",
+                location: "Lekki",
+                address: "12 Admiralty Way, Lekki Phase 1, Lagos",
+                hours: "10:00 AM - 10:00 PM",
+                rating: "4.8",
+                badge: "Popular",
+                image: "./images/Chicken.jpg"
+            },
+
+            {
+                name: "Ocean Basket Lekki",
+                type: "Seafood • Continental",
+                area: "Lekki",
+                location: "Lekki",
+                address: "Plot 4, Lekki Phase 1, Lagos",
+                hours: "11:00 AM - 11:00 PM",
+                rating: "4.7",
+                badge: "Top Rated",
+                image: "./images/Rice.jpg"
+            },
+
+            {
+                name: "Burger Spot Lekki",
+                type: "Burgers • Fast Food",
+                area: "Lekki",
+                location: "Lekki",
+                address: "18 Bisola Street, Lekki, Lagos",
+                hours: "9:00 AM - 11:00 PM",
+                rating: "4.6",
+                badge: "Fast Delivery",
+                image: "./images/Burger.jpg"
+            },
+
+
+            /* ===== IKEJA ===== */
+
+            {
+                name: "Ikeja Food Hub",
+                type: "Nigerian • Fast Food",
+                area: "Ikeja",
+                location: "Ikeja",
+                address: "25 Allen Avenue, Ikeja, Lagos",
+                hours: "8:00 AM - 10:00 PM",
+                rating: "4.8",
+                badge: "Popular",
+                image: "./images/Rice.jpg"
+            },
+
+            {
+                name: "Allen Kitchen",
+                type: "African • Rice • Chicken",
+                area: "Ikeja",
+                location: "Ikeja",
+                address: "10 Allen Avenue, Ikeja, Lagos",
+                hours: "9:00 AM - 11:00 PM",
+                rating: "4.5",
+                badge: "Top Rated",
+                image: "./images/Chicken.jpg"
+            },
+
+            {
+                name: "Ikeja Burger House",
+                type: "Burger • Snacks • Drinks",
+                area: "Ikeja",
+                location: "Ikeja",
+                address: "7 Opebi Road, Ikeja, Lagos",
+                hours: "10:00 AM - 12:00 AM",
+                rating: "4.6",
+                badge: "Fast Delivery",
+                image: "./images/Burger.jpg"
+            },
+
+
+            /* ===== YABA ===== */
+
+            {
+                name: "Yaba Food Corner",
+                type: "Nigerian • Local Meals",
+                area: "Yaba",
+                location: "Yaba",
+                address: "15 Herbert Macaulay Way, Yaba, Lagos",
+                hours: "8:00 AM - 9:30 PM",
+                rating: "4.7",
+                badge: "Popular",
+                image: "./images/Rice.jpg"
+            },
+
+            {
+                name: "Mainland Grill",
+                type: "Grill • Chicken • Rice",
+                area: "Yaba",
+                location: "Yaba",
+                address: "21 Commercial Avenue, Yaba, Lagos",
+                hours: "10:00 AM - 11:00 PM",
+                rating: "4.6",
+                badge: "Top Rated",
+                image: "./images/Chicken.jpg"
+            },
+
+            {
+                name: "Yaba Burger Station",
+                type: "Burgers • Fast Food",
+                area: "Yaba",
+                location: "Yaba",
+                address: "8 Queen Street, Yaba, Lagos",
+                hours: "9:00 AM - 10:00 PM",
+                rating: "4.5",
+                badge: "Fast Delivery",
+                image: "./images/Burger.jpg"
+            },
+
+
+            /* ===== SURULERE ===== */
+
+            {
+                name: "Surulere Kitchen",
+                type: "African • Nigerian",
+                area: "Surulere",
+                location: "Surulere",
+                address: "23 Adeniran Ogunsanya Street, Surulere, Lagos",
+                hours: "8:00 AM - 10:00 PM",
+                rating: "4.7",
+                badge: "Popular",
+                image: "./images/Rice.jpg"
+            },
+
+            {
+                name: "Surulere Grill",
+                type: "Grill • Chicken • Barbecue",
+                area: "Surulere",
+                location: "Surulere",
+                address: "16 Bode Thomas Street, Surulere, Lagos",
+                hours: "11:00 AM - 11:00 PM",
+                rating: "4.8",
+                badge: "Top Rated",
+                image: "./images/Chicken.jpg"
+            },
+
+
+            /* ===== VICTORIA ISLAND ===== */
+
+            {
+                name: "VI Food Lounge",
+                type: "Continental • African",
+                area: "Victoria Island",
+                location: "Victoria Island",
+                address: "7 Adeola Odeku Street, Victoria Island, Lagos",
+                hours: "10:00 AM - 11:30 PM",
+                rating: "4.9",
+                badge: "Premium",
+                image: "./images/Rice.jpg"
+            },
+
+            {
+                name: "Island Burger Bar",
+                type: "Burgers • Fast Food",
+                area: "Victoria Island",
+                location: "Victoria Island",
+                address: "18 Akin Adesola Street, VI, Lagos",
+                hours: "11:00 AM - 12:00 AM",
+                rating: "4.8",
+                badge: "Popular",
+                image: "./images/Burger.jpg"
+            },
+
+            {
+                name: "Ocean Grill VI",
+                type: "Seafood • Grill",
+                area: "Victoria Island",
+                location: "Victoria Island",
+                address: "31 Ahmadu Bello Way, VI, Lagos",
+                hours: "12:00 PM - 11:00 PM",
+                rating: "4.7",
+                badge: "Top Rated",
+                image: "./images/Chicken.jpg"
+            },
+
+
+            /* ===== ABUJA ===== */
+
+            {
+                name: "Abuja Food Palace",
+                type: "Nigerian • African",
+                area: "Abuja",
+                location: "Abuja",
+                address: "22 Aminu Kano Crescent, Wuse 2, Abuja",
+                hours: "8:00 AM - 10:00 PM",
+                rating: "4.8",
+                badge: "Popular",
+                image: "./images/Rice.jpg"
+            },
+
+            {
+                name: "Wuse Grill House",
+                type: "Grill • Chicken • Barbecue",
+                area: "Wuse",
+                location: "Abuja",
+                address: "14 Wuse 2, Abuja",
+                hours: "10:00 AM - 11:00 PM",
+                rating: "4.7",
+                badge: "Top Rated",
+                image: "./images/Chicken.jpg"
+            },
+
+            {
+                name: "Abuja Burger Spot",
+                type: "Burgers • Snacks • Drinks",
+                area: "Garki",
+                location: "Abuja",
+                address: "5 Garki Area 11, Abuja",
+                hours: "9:00 AM - 11:00 PM",
+                rating: "4.6",
+                badge: "Fast Delivery",
+                image: "./images/Burger.jpg"
+            },
+
+
+            /* ===== PORT HARCOURT ===== */
+
+            {
+                name: "Port Harcourt Kitchen",
+                type: "Nigerian • African",
+                area: "Port Harcourt",
+                location: "Port Harcourt",
+                address: "18 Aba Road, Port Harcourt",
+                hours: "8:00 AM - 10:00 PM",
+                rating: "4.7",
+                badge: "Popular",
+                image: "./images/Rice.jpg"
+            },
+
+            {
+                name: "Garden City Grill",
+                type: "Grill • Chicken • Barbecue",
+                area: "Port Harcourt",
+                location: "Port Harcourt",
+                address: "9 Stadium Road, Port Harcourt",
+                hours: "10:00 AM - 11:00 PM",
+                rating: "4.8",
+                badge: "Top Rated",
+                image: "./images/Chicken.jpg"
+            },
+
+
+            /* ===== IBADAN ===== */
+
+            {
+                name: "Ibadan Food Hub",
+                type: "Nigerian • Local Meals",
+                area: "Ibadan",
+                location: "Ibadan",
+                address: "12 Ring Road, Ibadan",
+                hours: "8:00 AM - 10:00 PM",
+                rating: "4.7",
+                badge: "Popular",
+                image: "./images/Rice.jpg"
+            },
+
+            {
+                name: "Bodija Grill",
+                type: "Grill • African • Chicken",
+                area: "Bodija",
+                location: "Ibadan",
+                address: "8 Bodija Road, Ibadan",
+                hours: "10:00 AM - 11:00 PM",
+                rating: "4.6",
+                badge: "Top Rated",
+                image: "./images/Chicken.jpg"
+            }
+
+        ];
+
+
+        /* =========================================
+           NORMALIZE LOCATION
+        ========================================= */
+
+        function normalizeLocation(text) {
+
+            return text
+                .toLowerCase()
+                .trim()
+                .replace(/, nigeria/g, "")
+                .replace(/, lagos/g, "");
+
+        }
+
+
+        /* =========================================
+           SEARCH RESTAURANTS
+        ========================================= */
+
+        function searchRestaurants() {
+
+            const input =
+                document.getElementById("locationInput");
+
+            const location =
+                input.value.trim();
+
+            if (location === "") {
+
+                alert("Please enter a location first.");
+
+                input.focus();
+
+                return;
+            }
+
+            showRestaurants(location);
+
+        }
+
+
+        /* =========================================
+           QUICK SEARCH
+        ========================================= */
+
+        function quickSearch(location) {
+
+            document.getElementById("locationInput").value = location;
+
+            showRestaurants(location);
+
+            document.getElementById("results").scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
+
+
+        /* =========================================
+           SHOW RESTAURANTS
+        ========================================= */
+
+        function showRestaurants(searchLocation) {
+
+            const grid =
+                document.getElementById("restaurantGrid");
+
+            const emptyMessage =
+                document.getElementById("emptyMessage");
+
+            const locationResult =
+                document.getElementById("locationResult");
+
+            const mapButton =
+                document.getElementById("mapButton");
+
+            const normalized =
+                normalizeLocation(searchLocation);
+
+
+            const results =
+                restaurants.filter(function(restaurant) {
+
+                    return (
+                        normalizeLocation(restaurant.location)
+                            .includes(normalized) ||
+
+                        normalizeLocation(restaurant.area)
+                            .includes(normalized) ||
+
+                        normalizeLocation(restaurant.address)
+                            .includes(normalized)
+                    );
+
+                });
+
+
+            grid.innerHTML = "";
+
+
+            if (results.length === 0) {
+
+                emptyMessage.style.display = "block";
+
+                locationResult.innerHTML =
+                    `No restaurants found for <strong>${escapeHTML(searchLocation)}</strong>`;
+
+            } else {
+
+                emptyMessage.style.display = "none";
+
+                locationResult.innerHTML =
+                    `Restaurants available around <strong>${escapeHTML(searchLocation)}</strong>`;
+
+                results.forEach(function(restaurant, index) {
+
+                    const card =
+                        document.createElement("div");
+
+                    card.className = "restaurant-card";
+
+                    card.style.animationDelay =
+                        `${index * 0.08}s`;
+
+
+                    card.innerHTML = `
+
+                        <div class="restaurant-image">
+
+                            <img
+                                src="${restaurant.image}"
+                                alt="${restaurant.name}"
+                                onerror="this.src='https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80'"
+                            >
+
+                            <div class="badge">
+                                ${restaurant.badge}
+                            </div>
+
+                            <div class="rating">
+                                ⭐ ${restaurant.rating}
+                            </div>
+
+                        </div>
+
+
+                        <div class="restaurant-content">
+
+                            <h3>
+                                ${restaurant.name}
+                            </h3>
+
+                            <div class="restaurant-type">
+                                ${restaurant.type}
+                            </div>
+
+                            <div class="restaurant-info">
+
+                                <div>
+                                    <i>📍</i>
+                                    <span>
+                                        ${restaurant.address}
+                                    </span>
+                                </div>
+
+                                <div>
+                                    <i>🕐</i>
+                                    <span>
+                                        ${restaurant.hours}
+                                    </span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="card-buttons">
+
+                                <a
+                                    href="order.html"
+                                    class="order-btn"
+                                >
+                                    Order Food
+                                </a>
+
+                                <button
+                                    class="direction-btn"
+                                    onclick="openDirections('${restaurant.address}')"
+                                >
+                                    Directions
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+
+                    grid.appendChild(card);
+
+                });
+
+            }
+
+
+            /* GOOGLE MAPS */
+
+            const mapsURL =
+                "https://www.google.com/maps/search/?api=1&query=" +
+                encodeURIComponent(searchLocation + ", Nigeria");
+
+            mapButton.href = mapsURL;
+
+        }
+
+
+        /* =========================================
+           GOOGLE MAP DIRECTIONS
+        ========================================= */
+
+        function openDirections(address) {
+
+            const url =
+                "https://www.google.com/maps/search/?api=1&query=" +
+                encodeURIComponent(address);
+
+            window.open(url, "_blank");
+
+        }
+
+
+        /* =========================================
+           ESCAPE HTML
+        ========================================= */
+
+        function escapeHTML(text) {
+
+            const div =
+                document.createElement("div");
+
+            div.textContent = text;
+
+            return div.innerHTML;
+
+        }
+
+
+        /* =========================================
+           ENTER KEY SEARCH
+        ========================================= */
+
+        document
+            .getElementById("locationInput")
+            .addEventListener("keydown", function(event) {
+
+                if (event.key === "Enter") {
+
+                    searchRestaurants();
+
+                }
+
+            });
+
+
+        /* =========================================
+           DEFAULT RESTAURANTS
+        ========================================= */
+
+        window.addEventListener("DOMContentLoaded", function() {
+
+            showRestaurants("Lekki");
+
+        });
+
+    </script>
+
+</body>
+</html>
+```
