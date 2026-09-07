@@ -4,13 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Order Now | FoodExpress</title>
+<title>Order Now | REDGO</title>
 
 <style>
-
-/* =========================
-   GLOBAL
-========================= */
 
 *{
     margin:0;
@@ -59,9 +55,7 @@ img{
 }
 
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 .header{
     height:78px;
@@ -166,9 +160,7 @@ img{
 }
 
 
-/* =========================
-   MAIN
-========================= */
+/* MAIN */
 
 .order-page{
     padding:42px 6% 70px;
@@ -180,9 +172,7 @@ img{
 }
 
 
-/* =========================
-   PAGE TITLE
-========================= */
+/* PAGE TITLE */
 
 .page-title{
     display:flex;
@@ -206,22 +196,52 @@ img{
     font-size:14px;
 }
 
+
+/* DELIVERY LOCATION */
+
 .delivery-location{
+    display:flex;
+    align-items:center;
+    gap:8px;
     background:#ffffff;
     border:1px solid #e5e5e5;
     border-radius:10px;
-    padding:14px 18px;
+    padding:6px;
+}
+
+.delivery-location input{
+    width:240px;
+    border:0;
+    outline:none;
+    padding:10px 12px;
     font-size:13px;
+    color:#171717;
+    background:#ffffff;
 }
 
-.delivery-location strong{
-    color:#e51b23;
+.delivery-location input::placeholder{
+    color:#999999;
+}
+
+.location-button{
+    border:0;
+    background:#e51b23;
+    color:#ffffff;
+    padding:11px 16px;
+    border-radius:7px;
+    font-size:12px;
+    font-weight:bold;
+    white-space:nowrap;
+    transition:.3s ease;
+}
+
+.location-button:hover{
+    background:#171717;
+    transform:translateY(-1px);
 }
 
 
-/* =========================
-   CATEGORIES
-========================= */
+/* CATEGORIES */
 
 .categories{
     display:flex;
@@ -256,9 +276,7 @@ img{
 }
 
 
-/* =========================
-   ORDER LAYOUT
-========================= */
+/* ORDER LAYOUT */
 
 .order-layout{
     display:grid;
@@ -268,9 +286,7 @@ img{
 }
 
 
-/* =========================
-   FOOD SECTION
-========================= */
+/* FOOD */
 
 .food-heading{
     display:flex;
@@ -383,9 +399,7 @@ img{
 }
 
 
-/* =========================
-   CART
-========================= */
+/* CART */
 
 .cart{
     background:#ffffff;
@@ -543,9 +557,7 @@ img{
 }
 
 
-/* =========================
-   CHECKOUT
-========================= */
+/* CHECKOUT */
 
 .checkout{
     display:none;
@@ -596,9 +608,7 @@ img{
 }
 
 
-/* =========================
-   INPUTS
-========================= */
+/* INPUTS */
 
 .form-group{
     margin-bottom:17px;
@@ -633,9 +643,7 @@ img{
 }
 
 
-/* =========================
-   PAYMENT
-========================= */
+/* PAYMENT */
 
 .payment-box{
     background:#fff8f8;
@@ -748,9 +756,7 @@ img{
 }
 
 
-/* =========================
-   PROCESSING
-========================= */
+/* PROCESSING */
 
 .processing{
     position:fixed;
@@ -799,9 +805,7 @@ img{
 }
 
 
-/* =========================
-   SUCCESS
-========================= */
+/* SUCCESS */
 
 .success{
     position:fixed;
@@ -904,9 +908,7 @@ img{
 }
 
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 .footer{
     background:#171717;
@@ -970,12 +972,9 @@ img{
 }
 
 
-/* =========================
-   ANIMATIONS
-========================= */
+/* ANIMATIONS */
 
 @keyframes cardAppear{
-
     from{
         opacity:0;
         transform:translateY(18px);
@@ -985,11 +984,9 @@ img{
         opacity:1;
         transform:translateY(0);
     }
-
 }
 
 @keyframes sectionAppear{
-
     from{
         opacity:0;
         transform:translateY(25px);
@@ -999,11 +996,9 @@ img{
         opacity:1;
         transform:translateY(0);
     }
-
 }
 
 @keyframes popup{
-
     from{
         opacity:0;
         transform:scale(.92);
@@ -1013,19 +1008,15 @@ img{
         opacity:1;
         transform:scale(1);
     }
-
 }
 
 @keyframes spin{
-
     to{
         transform:rotate(360deg);
     }
-
 }
 
 @keyframes successPop{
-
     0%{
         transform:scale(.5);
         opacity:0;
@@ -1039,13 +1030,10 @@ img{
         transform:scale(1);
         opacity:1;
     }
-
 }
 
 
-/* =========================
-   TABLET
-========================= */
+/* TABLET */
 
 @media(max-width:1050px){
 
@@ -1069,9 +1057,7 @@ img{
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:750px){
 
@@ -1082,34 +1068,10 @@ img{
 
     .navbar{
         display:none;
-        position:absolute;
-        left:0;
-        right:0;
-        top:70px;
-        background:#ffffff;
-        padding:8px 6%;
-        flex-direction:column;
-        align-items:flex-start;
-        gap:0;
-        border-bottom:1px solid #eeeeee;
-        box-shadow:0 10px 25px rgba(0,0,0,.08);
-    }
-
-    .navbar.show{
-        display:flex;
-    }
-
-    .navbar a{
-        width:100%;
-        padding:13px 0;
     }
 
     .login-btn{
         display:none;
-    }
-
-    .menu-btn{
-        display:block;
     }
 
     .order-page{
@@ -1125,7 +1087,18 @@ img{
     }
 
     .delivery-location{
+        width:100%;
         margin-top:17px;
+    }
+
+    .delivery-location input{
+        width:100%;
+        min-width:0;
+    }
+
+    .location-button{
+        flex-shrink:0;
+        padding:11px 13px;
     }
 
     .food-grid{
@@ -1157,9 +1130,7 @@ img{
 }
 
 
-/* =========================
-   SMALL PHONE
-========================= */
+/* SMALL PHONE */
 
 @media(max-width:420px){
 
@@ -1180,9 +1151,18 @@ img{
         height:40px;
     }
 
-    .menu-btn{
-        width:40px;
-        height:40px;
+    .delivery-location{
+        gap:4px;
+    }
+
+    .delivery-location input{
+        font-size:12px;
+        padding:10px 8px;
+    }
+
+    .location-button{
+        font-size:11px;
+        padding:10px 9px;
     }
 
     .success-card{
@@ -1192,23 +1172,16 @@ img{
 }
 
 </style>
-
 </head>
 
 
 <body>
 
-
-<!-- =========================
-     HEADER
-========================= -->
-
 <header class="header">
 
     <a href="index.html" class="logo">
-        Food<span>Express</span>
+        RED<span>GO</span>
     </a>
-
 
     <nav class="navbar" id="navbar">
 
@@ -1230,7 +1203,6 @@ img{
 
     </nav>
 
-
     <div class="header-right">
 
         <button
@@ -1238,7 +1210,6 @@ img{
             onclick="scrollToCart()"
             title="View Cart"
         >
-
             🛒
 
             <span
@@ -1247,9 +1218,7 @@ img{
             >
                 0
             </span>
-
         </button>
-
 
         <a
             href="login.html"
@@ -1258,30 +1227,14 @@ img{
             Login
         </a>
 
-
-        <button
-            class="menu-btn"
-            onclick="toggleMenu()"
-        >
-            ☰
-        </button>
-
     </div>
 
 </header>
 
 
-
-<!-- =========================
-     MAIN ORDER PAGE
-========================= -->
-
 <main class="order-page">
 
 <div class="container">
-
-
-    <!-- PAGE TITLE -->
 
     <div class="page-title">
 
@@ -1297,23 +1250,25 @@ img{
 
         </div>
 
-
         <div class="delivery-location">
 
-            📍 Delivering to:
-            <strong>
-                Your Location
-            </strong>
+            <input
+                type="text"
+                id="deliveryLocation"
+                placeholder="Enter your delivery location"
+            >
+
+           <a href="delivery.html">
+                <button
+                >
+                    Find Location
+                </button>
+            </a>
 
         </div>
 
     </div>
 
-
-
-    <!-- =========================
-         CATEGORIES
-    ========================= -->
 
     <div class="categories">
 
@@ -1376,15 +1331,7 @@ img{
     </div>
 
 
-
-    <!-- =========================
-         FOOD + CART
-    ========================= -->
-
     <div class="order-layout">
-
-
-        <!-- FOOD -->
 
         <section>
 
@@ -1406,9 +1353,6 @@ img{
                 id="foodGrid"
             >
 
-
-                <!-- BURGER -->
-
                 <div
                     class="food-card"
                     data-category="burger"
@@ -1427,7 +1371,6 @@ img{
 
                     </div>
 
-
                     <div class="food-info">
 
                         <h3>
@@ -1437,7 +1380,6 @@ img{
                         <p>
                             Juicy beef patty, lettuce, tomato and special sauce.
                         </p>
-
 
                         <div class="food-bottom">
 
@@ -1463,9 +1405,6 @@ img{
                 </div>
 
 
-
-                <!-- CHEESE BURGER -->
-
                 <div
                     class="food-card"
                     data-category="burger"
@@ -1480,7 +1419,6 @@ img{
 
                     </div>
 
-
                     <div class="food-info">
 
                         <h3>
@@ -1490,7 +1428,6 @@ img{
                         <p>
                             Two beef patties, melted cheese and fresh vegetables.
                         </p>
-
 
                         <div class="food-bottom">
 
@@ -1516,9 +1453,6 @@ img{
                 </div>
 
 
-
-                <!-- PIZZA -->
-
                 <div
                     class="food-card"
                     data-category="pizza"
@@ -1537,7 +1471,6 @@ img{
 
                     </div>
 
-
                     <div class="food-info">
 
                         <h3>
@@ -1547,7 +1480,6 @@ img{
                         <p>
                             Hot pizza with pepperoni, mozzarella and tomato sauce.
                         </p>
-
 
                         <div class="food-bottom">
 
@@ -1573,9 +1505,6 @@ img{
                 </div>
 
 
-
-                <!-- CHICKEN -->
-
                 <div
                     class="food-card"
                     data-category="chicken"
@@ -1590,7 +1519,6 @@ img{
 
                     </div>
 
-
                     <div class="food-info">
 
                         <h3>
@@ -1600,7 +1528,6 @@ img{
                         <p>
                             Crispy golden chicken seasoned with special house spices.
                         </p>
-
 
                         <div class="food-bottom">
 
@@ -1626,9 +1553,6 @@ img{
                 </div>
 
 
-
-                <!-- CHICKEN AND CHIPS -->
-
                 <div
                     class="food-card"
                     data-category="chips"
@@ -1643,7 +1567,6 @@ img{
 
                     </div>
 
-
                     <div class="food-info">
 
                         <h3>
@@ -1653,7 +1576,6 @@ img{
                         <p>
                             Crispy chicken served with golden fries and dipping sauce.
                         </p>
-
 
                         <div class="food-bottom">
 
@@ -1679,9 +1601,6 @@ img{
                 </div>
 
 
-
-                <!-- JOLLOF RICE -->
-
                 <div
                     class="food-card"
                     data-category="rice"
@@ -1696,7 +1615,6 @@ img{
 
                     </div>
 
-
                     <div class="food-info">
 
                         <h3>
@@ -1706,7 +1624,6 @@ img{
                         <p>
                             Delicious Nigerian jollof rice with your choice of protein.
                         </p>
-
 
                         <div class="food-bottom">
 
@@ -1732,9 +1649,6 @@ img{
                 </div>
 
 
-
-                <!-- SHAWARMA -->
-
                 <div
                     class="food-card"
                     data-category="shawarma"
@@ -1749,7 +1663,6 @@ img{
 
                     </div>
 
-
                     <div class="food-info">
 
                         <h3>
@@ -1759,7 +1672,6 @@ img{
                         <p>
                             Tender chicken, fresh vegetables and creamy sauce.
                         </p>
-
 
                         <div class="food-bottom">
 
@@ -1785,9 +1697,6 @@ img{
                 </div>
 
 
-
-                <!-- COCA COLA -->
-
                 <div
                     class="food-card"
                     data-category="drinks"
@@ -1802,7 +1711,6 @@ img{
 
                     </div>
 
-
                     <div class="food-info">
 
                         <h3>
@@ -1812,7 +1720,6 @@ img{
                         <p>
                             Chilled Coca-Cola to complement your delicious meal.
                         </p>
-
 
                         <div class="food-bottom">
 
@@ -1838,9 +1745,6 @@ img{
                 </div>
 
 
-
-                <!-- CHICKEN WINGS -->
-
                 <div
                     class="food-card"
                     data-category="chicken"
@@ -1855,7 +1759,6 @@ img{
 
                     </div>
 
-
                     <div class="food-info">
 
                         <h3>
@@ -1865,7 +1768,6 @@ img{
                         <p>
                             Tender chicken wings coated with delicious spicy sauce.
                         </p>
-
 
                         <div class="food-bottom">
 
@@ -1895,11 +1797,6 @@ img{
         </section>
 
 
-
-        <!-- =========================
-             CART
-        ========================= -->
-
         <aside
             class="cart"
             id="cart"
@@ -1916,7 +1813,6 @@ img{
                 </span>
 
             </div>
-
 
             <div
                 class="cart-items"
@@ -1941,7 +1837,6 @@ img{
 
             </div>
 
-
             <div class="cart-summary">
 
                 <div class="summary-row">
@@ -1956,7 +1851,6 @@ img{
 
                 </div>
 
-
                 <div class="summary-row">
 
                     <span>
@@ -1969,7 +1863,6 @@ img{
 
                 </div>
 
-
                 <div class="summary-row summary-total">
 
                     <span>
@@ -1981,7 +1874,6 @@ img{
                     </span>
 
                 </div>
-
 
                 <button
                     class="checkout-btn"
@@ -1996,11 +1888,6 @@ img{
 
     </div>
 
-
-
-    <!-- =========================
-         CHECKOUT
-    ========================= -->
 
     <section
         class="checkout"
@@ -2019,11 +1906,7 @@ img{
 
         </div>
 
-
         <div class="checkout-grid">
-
-
-            <!-- CUSTOMER INFORMATION -->
 
             <div class="checkout-card">
 
@@ -2034,7 +1917,6 @@ img{
                 <p>
                     Enter the details we need to deliver your order.
                 </p>
-
 
                 <div class="form-group">
 
@@ -2050,7 +1932,6 @@ img{
 
                 </div>
 
-
                 <div class="form-group">
 
                     <label>
@@ -2065,7 +1946,6 @@ img{
 
                 </div>
 
-
                 <div class="form-group">
 
                     <label>
@@ -2078,7 +1958,6 @@ img{
                     ></textarea>
 
                 </div>
-
 
                 <div class="form-group">
 
@@ -2096,9 +1975,6 @@ img{
             </div>
 
 
-
-            <!-- PAYMENT -->
-
             <div class="checkout-card">
 
                 <h3>
@@ -2109,9 +1985,7 @@ img{
                     Pay using OPay or any Nigerian bank transfer.
                 </p>
 
-
                 <div class="payment-box">
-
 
                     <div class="payment-heading">
 
@@ -2133,9 +2007,6 @@ img{
 
                     </div>
 
-
-                    <!-- CHANGE THESE DETAILS -->
-
                     <div class="account-details">
 
                         <div class="account-row">
@@ -2150,7 +2021,6 @@ img{
 
                         </div>
 
-
                         <div class="account-row">
 
                             <span>
@@ -2163,7 +2033,6 @@ img{
 
                         </div>
 
-
                         <div class="account-row">
 
                             <span>
@@ -2175,7 +2044,6 @@ img{
                             </strong>
 
                         </div>
-
 
                         <div class="account-row">
 
@@ -2191,14 +2059,12 @@ img{
 
                     </div>
 
-
                     <button
                         class="copy-account"
                         onclick="copyAccountNumber()"
                     >
                         📋 Copy Account Number
                     </button>
-
 
                     <div class="transfer-info">
 
@@ -2224,7 +2090,6 @@ img{
 
                     </div>
 
-
                     <button
                         class="transfer-button"
                         onclick="confirmTransfer()"
@@ -2244,11 +2109,6 @@ img{
 
 </main>
 
-
-
-<!-- =========================
-     PROCESSING POPUP
-========================= -->
 
 <div
     class="processing"
@@ -2272,11 +2132,6 @@ img{
 </div>
 
 
-
-<!-- =========================
-     SUCCESS POPUP
-========================= -->
-
 <div
     class="success"
     id="success"
@@ -2296,7 +2151,6 @@ img{
             Your payment confirmation has been received and your order has been placed.
         </p>
 
-
         <div class="success-details">
 
             <div class="success-row">
@@ -2311,7 +2165,6 @@ img{
 
             </div>
 
-
             <div class="success-row">
 
                 <span>
@@ -2323,7 +2176,6 @@ img{
                 </strong>
 
             </div>
-
 
             <div class="success-row">
 
@@ -2337,7 +2189,6 @@ img{
 
             </div>
 
-
             <div class="success-row">
 
                 <span>
@@ -2350,7 +2201,6 @@ img{
 
             </div>
 
-
             <div class="success-row">
 
                 <span>
@@ -2362,7 +2212,6 @@ img{
                 </strong>
 
             </div>
-
 
             <div class="success-row">
 
@@ -2378,7 +2227,6 @@ img{
 
         </div>
 
-
         <button
             class="done-btn"
             onclick="finishOrder()"
@@ -2391,22 +2239,16 @@ img{
 </div>
 
 
-
-<!-- =========================
-     FOOTER
-========================= -->
-
 <footer class="footer">
 
 <div class="footer-container">
 
     <div class="footer-grid">
 
-
         <div>
 
             <div class="footer-logo">
-                FoodExpress
+                REDGO
             </div>
 
             <p>
@@ -2433,7 +2275,7 @@ img{
                     Restaurants
                 </a>
 
-                <a href="find-me.html">
+                <a href="findme.html">
                     Find Me
                 </a>
 
@@ -2488,7 +2330,7 @@ img{
                 </a>
 
                 <a href="#">
-                    ✉ support@foodexpress.com
+                    ✉ support@redgo.com
                 </a>
 
                 <a href="#">
@@ -2505,7 +2347,7 @@ img{
     <div class="footer-bottom">
 
         <span>
-            © 2026 FoodExpress. All rights reserved.
+            © 2026 REDGO. All rights reserved.
         </span>
 
         <span>
@@ -2519,25 +2361,40 @@ img{
 </footer>
 
 
-
 <script>
-
-/* =========================
-   CART
-========================= */
 
 let cart = [];
 
 
-/* =========================
-   ADD FOOD
-========================= */
+function goToFindMe(){
+
+    const location = document
+        .getElementById("deliveryLocation")
+        .value
+        .trim();
+
+    if(location === ""){
+
+        alert("Please enter your delivery location.");
+
+        document
+            .getElementById("deliveryLocation")
+            .focus();
+
+        return;
+    }
+
+    window.location.href =
+        "findme.html?location=" +
+        encodeURIComponent(location);
+
+}
+
 
 function addToCart(name, price, image){
 
     const existing =
         cart.find(item => item.name === name);
-
 
     if(existing){
 
@@ -2554,15 +2411,10 @@ function addToCart(name, price, image){
 
     }
 
-
     updateCart();
 
 }
 
-
-/* =========================
-   UPDATE CART
-========================= */
 
 function updateCart(){
 
@@ -2604,7 +2456,6 @@ function updateCart(){
 
     cartNumber.textContent =
         totalItems;
-
 
     cartItemsText.textContent =
         totalItems +
@@ -2736,14 +2587,9 @@ function updateCart(){
 }
 
 
-/* =========================
-   CHANGE QUANTITY
-========================= */
-
 function changeQuantity(index,change){
 
     cart[index].quantity += change;
-
 
     if(cart[index].quantity <= 0){
 
@@ -2751,15 +2597,10 @@ function changeQuantity(index,change){
 
     }
 
-
     updateCart();
 
 }
 
-
-/* =========================
-   REMOVE ITEM
-========================= */
 
 function removeItem(index){
 
@@ -2770,22 +2611,16 @@ function removeItem(index){
 }
 
 
-/* =========================
-   FILTER FOOD
-========================= */
-
 function filterFood(category,button){
 
     const buttons =
         document.querySelectorAll(".category-btn");
-
 
     buttons.forEach(btn => {
 
         btn.classList.remove("active");
 
     });
-
 
     button.classList.add("active");
 
@@ -2814,10 +2649,6 @@ function filterFood(category,button){
 }
 
 
-/* =========================
-   OPEN CHECKOUT
-========================= */
-
 function openCheckout(){
 
     if(cart.length === 0){
@@ -2834,9 +2665,7 @@ function openCheckout(){
     const checkout =
         document.getElementById("checkout");
 
-
     checkout.classList.add("show");
-
 
     checkout.scrollIntoView({
         behavior:"smooth",
@@ -2845,10 +2674,6 @@ function openCheckout(){
 
 }
 
-
-/* =========================
-   COPY ACCOUNT NUMBER
-========================= */
 
 function copyAccountNumber(){
 
@@ -2884,10 +2709,6 @@ function copyAccountNumber(){
 
 }
 
-
-/* =========================
-   CONFIRM TRANSFER
-========================= */
 
 function confirmTransfer(){
 
@@ -2973,20 +2794,11 @@ function confirmTransfer(){
         .classList.add("show");
 
 
-    /*
-       This is the visual processing step.
-
-       For real payment verification,
-       connect this function to your
-       payment provider/backend.
-    */
-
     setTimeout(function(){
 
         document
             .getElementById("processing")
             .classList.remove("show");
-
 
         showSuccess();
 
@@ -2994,10 +2806,6 @@ function confirmTransfer(){
 
 }
 
-
-/* =========================
-   SUCCESS
-========================= */
 
 function showSuccess(){
 
@@ -3073,10 +2881,6 @@ function showSuccess(){
 }
 
 
-/* =========================
-   FINISH ORDER
-========================= */
-
 function finishOrder(){
 
     document
@@ -3123,10 +2927,6 @@ function finishOrder(){
 }
 
 
-/* =========================
-   SCROLL TO CART
-========================= */
-
 function scrollToCart(){
 
     document
@@ -3139,25 +2939,9 @@ function scrollToCart(){
 }
 
 
-/* =========================
-   MOBILE MENU
-========================= */
-
-function toggleMenu(){
-
-    document
-        .getElementById("navbar")
-        .classList.toggle("show");
-
-}
-
-
-
 updateCart();
 
 </script>
 
 </body>
-
 </html>
-

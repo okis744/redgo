@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery - Add Address</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body {
+            background: #f5f5f5;
+            color: #222;
+        }
+        .app {
+            width: 100%;
+            max-width: 430px;
+            min-height: 100vh;
+            margin: auto;
+            background: white;
+            overflow: hidden;
+        }
+        /* HEADER */
+        .topbar {
+            height: 64px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 0 18px;
+            border-bottom: 1px solid #eee;
+            background: white;
+        }
+        .back {
+            border: none;
+            background: transparent;
+            font-size: 28px;
+            cursor: pointer;
+        }
+        .topbar h1 {
+            font-size: 18px;
+            font-weight: 700;
+        }
+        /* CONTENT */
+        .content {
+            padding: 22px 18px 35px;
+        }
+        .intro {
+            font-size: 17px;
+            line-height: 1.4;
+            margin-bottom: 18px;
+        }
+        /* FORM */
+        .field {
+            margin-bottom: 12px;
+        }
+        label {
+            display: block;
+            font-size: 10px;
+            color: #888;
+            margin: 0 12px 4px;
+        }
+        input,
+        select {
+            width: 100%;
+            height: 47px;
+            border: 1px solid #e2e2e2;
+            border-radius: 7px;
+            padding: 0 13px;
+            background: #fafafa;
+            outline: none;
+            font-size: 13px;
+            color: #333;
+        }
+        input:focus,
+        select:focus {
+            border-color: #ff4b43;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(255, 75, 67, 0.08);
+        }
+        select:disabled {
+            color: #aaa;
+        }
+        /* BUTTON */
+        .primary {
+            width: 100%;
+            height: 47px;
+            border: none;
+            border-radius: 6px;
+            margin-top: 105px;
+            background: linear-gradient(90deg, #ff776d, #ff2d22);
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 7px 18px rgba(255, 53, 43, 0.22);
+        }
+        /* SECTIONS */
+        .section {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 13px;
+        }
+        .section-title h2 {
+            font-size: 15px;
+        }
+        .small-link {
+            border: none;
+            background: transparent;
+            color: #f0443c;
+            font-size: 10px;
+            cursor: pointer;
+        }
+        /* RECIPIENT */
+        .recipient-card {
+            background: #fafafa;
+            border-radius: 8px;
+            padding: 12px;
+            border: 1px solid #eee;
+        }
+        .recipient-card p {
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+        .recipient-card small {
+            color: #888;
+            font-size: 10px;
+        }
+        .add-recipient {
+            width: 100%;
+            height: 43px;
+            border: none;
+            border-radius: 5px;
+            background: linear-gradient(90deg, #ff756b, #ff2e23);
+            color: white;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        /* ADDRESS */
+        .address-text {
+            font-size: 11px;
+            color: #555;
+            line-height: 1.5;
+        }
+        /* ORDER ITEMS */
+        .item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fafafa;
+            border-radius: 8px;
+            padding: 11px;
+            margin-bottom: 9px;
+            border: 1px solid #f0f0f0;
+        }
+        .item-info h3 {
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+        .item-info p {
+            color: #999;
+            font-size: 9px;
+        }
+        /* QUANTITY */
+        .quantity {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .quantity button {
+            width: 25px;
+            height: 25px;
+            border: 1px solid #ffd0cc;
+            background: white;
+            color: #f0443c;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .quantity span {
+            font-size: 12px;
+            min-width: 12px;
+            text-align: center;
+        }
+        /* SUMMARY */
+        .summary {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .summary small {
+            display: block;
+            color: #888;
+            font-size: 9px;
+            margin-bottom: 4px;
+        }
+        .summary strong {
+            font-size: 15px;
+        }
+        .continue {
+            border: none;
+            background: linear-gradient(90deg, #ff776d, #ff2d22);
+            color: white;
+            border-radius: 6px;
+            padding: 12px 18px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        /* TOAST MESSAGE */
+        .toast {
+            position: fixed;
+            left: 50%;
+            bottom: 22px;
+            transform: translate(-50%, 20px);
+            background: #222;
+            color: white;
+            padding: 11px 17px;
+            border-radius: 7px;
+            font-size: 12px;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.25s;
+            z-index: 100;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+        .hidden {
+            display: none;
+        }
+        /* DESKTOP */
+        @media (min-width: 700px) {
+            body {
+                padding: 30px 0;
+            }
+            .app {
+                border-radius: 18px;
+                box-shadow: 0 12px 45px rgba(0, 0, 0, 0.12);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="app">
+    <!-- HEADER -->
+    <header class="topbar">
+        <button class="back" id="backBtn">‹</button>
+        <h1>Add Address</h1>
+    </header>
+    <main class="content">
+        <p class="intro">
+            Change location where<br>
+            order is delivered!
+        </p>
+        <!-- SAVED ADDRESS -->
+        <div class="field">
+            <label for="savedAddress">Saved Address</label>
+            <select id="savedAddress">
+                <option value="">Add New Address</option>
+                <option value="home">Home - Lagos</option>
+                <option value="work">Work - Lagos</option>
+            </select>
+        </div>
+        <!-- STATE -->
+        <div class="field">
+            <label for="state">State</label>
+            <select id="state">
+                <option value="">Select State</option>
+                <option value="Lagos">Lagos</option>
+                <option value="Oyo">Oyo</option>
+                <option value="Abuja">FCT Abuja</option>
+                <option value="Ogun">Ogun</option>
+            </select>
+        </div>
+        <!-- AREA -->
+        <div class="field">
+            <label for="area">Area</label>
+            <select id="area" disabled>
+                <option value="">Select Area</option>
+            </select>
+        </div>
+        <!-- HOUSE NUMBER -->
+        <div class="field">
+            <label for="house">House Number</label>
+            <input
+                type="text"
+                id="house"
+                placeholder="House Number"
+            >
+        </div>
+        <!-- STREET -->
+        <div class="field">
+            <label for="street">Street</label>
+            <input
+                type="text"
+                id="street"
+                placeholder="Street"
+            >
+        </div>
+        <!-- USE ADDRESS -->
+        <button class="primary" id="useAddress">
+            Use this Address
+        </button>
+        <!-- RECIPIENT -->
+        <section class="section hidden" id="deliverySection">
+            <div class="section-title">
+                <h2>Recipient</h2>
+            </div>
+            <div id="recipientEmpty">
+                <button class="add-recipient" id="addRecipient">
+                    Add Recipient
+                </button>
+            </div>
+            <div class="recipient-card hidden" id="recipientCard">
+                <p id="recipientName">
+                    Recipient
+                </p>
+                <small id="recipientPhone">
+                    No phone number
+                </small>
+            </div>
+        </section>
+        <!-- DELIVERY ADDRESS -->
+        <section class="section hidden" id="addressSection">
+            <div class="section-title">
+                <h2>Delivery Address</h2>
+                <button class="small-link" id="editAddress">
+                    Update delivery details
+                </button>
+            </div>
+            <p class="address-text" id="addressSummary">
+                No address added.
+            </p>
+        </section>
+        <!-- ORDER -->
+        <section class="section hidden" id="ordersSection">
+            <div class="section-title">
+                <div>
+                    <h2>Order Items</h2>
+                    <p
+                        class="address-text"
+                        id="itemsNote"
+                    >
+                        2 items have been added to this order
+                    </p>
+                </div>
+            </div>
+            <!-- ITEM 1 -->
+            <div class="item" data-price="25900">
+                <div class="item-info">
+                    <h3>
+                        Suya Burger
+                    </h3>
+                    <p>
+                        ₦25,900.00 per item
+                    </p>
+                </div>
+                <div class="quantity">
+                    <button class="minus">
+                        −
+                    </button>
+                    <span class="count">
+                        1
+                    </span>
+                    <button class="plus">
+                        +
+                    </button>
+                </div>
+            </div>
+            <!-- ITEM 2 -->
+            <div class="item" data-price="14100">
+                <div class="item-info">
+                    <h3>
+                        Crunchy Chicken Burger
+                    </h3>
+                    <p>
+                        ₦14,100.00 per item
+                    </p>
+                </div>
+                <div class="quantity">
+                    <button class="minus">
+                        −
+                    </button>
+                    <span class="count">
+                        3
+                    </span>
+                    <button class="plus">
+                        +
+                    </button>
+                </div>
+            </div>
+            <!-- TOTAL -->
+            <div class="summary">
+                <div>
+                    <small>
+                        Sub Total
+                    </small>
+                    <strong id="total">
+                        ₦68,200.00
+                    </strong>
+                </div>
+                <button class="continue" id="continueBtn">
+                    Continue →
+                </button>
+            </div>
+        </section>
+    </main>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+    /* =========================
+       VARIABLES
+    ========================= */
+    const stateSelect =
+        document.getElementById("state");
+    const areaSelect =
+        document.getElementById("area");
+    const useAddress =
+        document.getElementById("useAddress");
+    const deliverySection =
+        document.getElementById("deliverySection");
+    const addressSection =
+        document.getElementById("addressSection");
+    const ordersSection =
+        document.getElementById("ordersSection");
+    const addressSummary =
+        document.getElementById("addressSummary");
+    const toast =
+        document.getElementById("toast");
+    /* =========================
+       AREAS
+    ========================= */
+    const areas = {
+        Lagos: [
+            "Ikeja",
+            "Lekki",
+            "Yaba",
+            "Surulere",
+            "Agege",
+            "Ikorodu",
+            "Ajah",
+            "Victoria Island",
+            "Airport Road"
+        ],
+        Oyo: [
+            "Ibadan",
+            "Bodija",
+            "Challenge",
+            "Ring Road",
+            "Apata"
+        ],
+        Abuja: [
+            "Garki",
+            "Wuse",
+            "Maitama",
+            "Asokoro",
+            "Gwarinpa"
+        ],
+        Ogun: [
+            "Abeokuta",
+            "Sagamu",
+            "Ifo",
+            "Ota",
+            "Ijebu Ode"
+        ]
+    };
+    /* =========================
+       STATE → AREA
+    ========================= */
+    stateSelect.addEventListener("change", function () {
+        const state = this.value;
+        areaSelect.innerHTML =
+            '<option value="">Select Area</option>';
+        if (!state) {
+            areaSelect.disabled = true;
+            return;
+        }
+        areaSelect.disabled = false;
+        areas[state].forEach(function (area) {
+            const option =
+                document.createElement("option");
+            option.value = area;
+            option.textContent = area;
+            areaSelect.appendChild(option);
+        });
+    });
+    /* =========================
+       TOAST
+    ========================= */
+    function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("show");
+        setTimeout(function () {
+            toast.classList.remove("show");
+        }, 2500);
+    }
+    /* =========================
+       ADD ADDRESS
+    ========================= */
+    useAddress.addEventListener("click", function () {
+        const state =
+            stateSelect.value;
+        const area =
+            areaSelect.value;
+        const house =
+            document.getElementById("house")
+            .value
+            .trim();
+        const street =
+            document.getElementById("street")
+            .value
+            .trim();
+        if (
+            !state ||
+            !area ||
+            !house ||
+            !street
+        ) {
+            showToast(
+                "Please complete your delivery address."
+            );
+            return;
+        }
+        addressSummary.textContent =
+            house +
+            ", " +
+            street +
+            ", " +
+            area +
+            ", " +
+            state;
+        deliverySection.classList.remove(
+            "hidden"
+        );
+        addressSection.classList.remove(
+            "hidden"
+        );
+        ordersSection.classList.remove(
+            "hidden"
+        );
+        showToast(
+            "Delivery address added successfully."
+        );
+    });
+    /* =========================
+       ADD RECIPIENT
+    ========================= */
+    document
+        .getElementById("addRecipient")
+        .addEventListener("click", function () {
+            const name =
+                prompt("Enter recipient name:");
+            if (!name) return;
+            const phone =
+                prompt(
+                    "Enter recipient phone number:"
+                );
+            if (!phone) return;
+            document
+                .getElementById("recipientName")
+                .textContent = name;
+            document
+                .getElementById("recipientPhone")
+                .textContent = phone;
+            document
+                .getElementById("recipientEmpty")
+                .classList.add("hidden");
+            document
+                .getElementById("recipientCard")
+                .classList.remove("hidden");
+            showToast(
+                "Recipient added."
+            );
+        });
+    /* =========================
+       EDIT ADDRESS
+    ========================= */
+    document
+        .getElementById("editAddress")
+        .addEventListener("click", function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    /* =========================
+       QUANTITY BUTTONS
+    ========================= */
+    document
+        .querySelectorAll(".item")
+        .forEach(function (item) {
+            const minus =
+                item.querySelector(".minus");
+            const plus =
+                item.querySelector(".plus");
+            const count =
+                item.querySelector(".count");
+            minus.addEventListener(
+                "click",
+                function () {
+                    let value =
+                        Number(count.textContent);
+                    if (value > 1) {
+                        value--;
+                        count.textContent =
+                            value;
+                        updateTotal();
+                    }
+                }
+            );
+            plus.addEventListener(
+                "click",
+                function () {
+                    let value =
+                        Number(count.textContent);
+                    value++;
+                    count.textContent =
+                        value;
+                    updateTotal();
+                }
+            );
+        });
+    /* =========================
+       UPDATE TOTAL
+    ========================= */
+    function updateTotal() {
+        let total = 0;
+        let itemCount = 0;
+        document
+            .querySelectorAll(".item")
+            .forEach(function (item) {
+                const price =
+                    Number(
+                        item.dataset.price
+                    );
+                const quantity =
+                    Number(
+                        item
+                            .querySelector(".count")
+                            .textContent
+                    );
+                total +=
+                    price * quantity;
+                itemCount +=
+                    quantity;
+            });
+        document.getElementById("total")
+            .textContent =
+                "₦" +
+                total.toLocaleString(
+                    "en-NG",
+                    {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                    }
+                );
+        document.getElementById("itemsNote")
+            .textContent =
+                itemCount +
+                (
+                    itemCount === 1
+                        ? " item"
+                        : " items"
+                ) +
+                " have been added to this order";
+    }
+    /* =========================
+       CONTINUE
+    ========================= */
+    document
+        .getElementById("continueBtn")
+        .addEventListener("click", function () {
+            showToast(
+                "Proceeding to checkout..."
+            );
+        });
+    /* =========================
+       BACK BUTTON
+    ========================= */
+    document
+        .getElementById("backBtn")
+        .addEventListener("click", function () {
+            if (history.length > 1) {
+                history.back();
+            } else {
+                showToast(
+                    "Back button clicked."
+                );
+            }
+        });
+    /* =========================
+       SAVED ADDRESS
+    ========================= */
+    document
+        .getElementById("savedAddress")
+        .addEventListener(
+            "change",
+            function () {
+                if (this.value === "home") {
+                    stateSelect.value =
+                        "Lagos";
+                    stateSelect.dispatchEvent(
+                        new Event("change")
+                    );
+                    areaSelect.value =
+                        "Lekki";
+                    document.getElementById("house")
+                        .value = "09";
+                    document.getElementById("street")
+                        .value = "Airport Road";
+                }
+                if (this.value === "work") {
+                    stateSelect.value =
+                        "Lagos";
+                    stateSelect.dispatchEvent(
+                        new Event("change")
+                    );
+                    areaSelect.value =
+                        "Ikeja";
+                    document.getElementById("house")
+                        .value = "15";
+                    document.getElementById("street")
+                        .value = "Allen Avenue";
+                }
+            }
+        );
+    /* INITIAL TOTAL */
+    updateTotal();
+</script>
+</body>
+</html>
