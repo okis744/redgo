@@ -8,18 +8,627 @@
 
     <title>Login | REDGO</title>
 
-    <link rel="stylesheet" href="login.css">
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #ffffff;
+            color: #171717;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input {
+            font-family: inherit;
+        }
+
+
+    
+
+        .login-page {
+            min-height: 100vh;
+            display: flex;
+            background: #fff;
+        }
+
+
+        /* =========================
+           LEFT IMAGE
+        ========================= */
+
+        .login-image {
+            width: 50%;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background: #e51b23;
+        }
+
+        .login-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            animation: imageZoom 10s ease-in-out infinite alternate;
+        }
+
+        .image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(229, 27, 35, 0.78),
+                rgba(0, 0, 0, 0.55)
+            );
+        }
+
+        .image-content {
+            position: absolute;
+            inset: 0;
+            padding: 45px 55px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 34px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            display: inline-block;
+            width: fit-content;
+            transition: 0.3s ease;
+        }
+
+        .logo span {
+            color: #ffffff;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .image-text {
+            max-width: 520px;
+            animation: textUp 1s ease forwards;
+        }
+
+        .small-title {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 18px;
+        }
+
+        .image-text h1 {
+            font-size: clamp(42px, 5vw, 70px);
+            line-height: 1.05;
+            margin-bottom: 22px;
+        }
+
+        .image-text > p:last-child {
+            font-size: 17px;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.9);
+            max-width: 470px;
+        }
+
+
+        /* =========================
+           LOGIN SECTION
+        ========================= */
+
+        .login-section {
+            width: 50%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+            background: #ffffff;
+        }
+
+        .login-box {
+            width: 100%;
+            max-width: 470px;
+            animation: boxAppear 0.8s ease forwards;
+        }
+
+
+        /* MOBILE LOGO */
+
+        .mobile-logo {
+            display: none;
+            color: #e51b23;
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 35px;
+        }
+
+        .mobile-logo span {
+            color: #171717;
+        }
+
+
+        /* =========================
+           WELCOME
+        ========================= */
+
+        .welcome {
+            margin-bottom: 32px;
+        }
+
+        .welcome > p {
+            color: #e51b23;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .welcome h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+            color: #171717;
+        }
+
+        .welcome span {
+            color: #777;
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           FORM
+        ========================= */
+
+        .login-form {
+            width: 100%;
+        }
+
+        .input-group {
+            margin-bottom: 22px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 9px;
+            color: #333;
+        }
+
+        .input-box {
+            height: 58px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            background: #fff;
+            transition: 0.3s ease;
+            overflow: hidden;
+        }
+
+        .input-box:focus-within {
+            border-color: #e51b23;
+            box-shadow: 0 0 0 4px rgba(229, 27, 35, 0.08);
+            transform: translateY(-1px);
+        }
+
+        .input-icon {
+            width: 58px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .input-icon img {
+            width: 22px;
+            height: 22px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .input-box input {
+            flex: 1;
+            height: 100%;
+            border: none;
+            outline: none;
+            font-size: 15px;
+            color: #171717;
+            padding: 0 8px;
+            min-width: 0;
+        }
+
+        .input-box input::placeholder {
+            color: #aaa;
+        }
+
+        .show-password {
+            width: 50px;
+            height: 100%;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 18px;
+            transition: 0.3s ease;
+        }
+
+        .show-password:hover {
+            transform: scale(1.15);
+        }
+
+        .error-message {
+            display: block;
+            color: #e51b23;
+            font-size: 12px;
+            margin-top: 6px;
+            min-height: 15px;
+        }
+
+        .input-error {
+            border-color: #e51b23 !important;
+            animation: shake 0.3s ease;
+        }
+
+
+        /* =========================
+           OPTIONS
+        ========================= */
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin: 4px 0 25px;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .remember input {
+            width: 16px;
+            height: 16px;
+            accent-color: #e51b23;
+            cursor: pointer;
+        }
+
+        #forgotPassword {
+            color: #e51b23;
+            font-size: 14px;
+            font-weight: 700;
+            transition: 0.3s ease;
+        }
+
+        #forgotPassword:hover {
+            color: #171717;
+        }
+
+
+        /* =========================
+           LOGIN BUTTON
+        ========================= */
+
+        .login-button {
+            width: 100%;
+            height: 58px;
+            border: none;
+            border-radius: 30px;
+            background: #e51b23;
+            color: white;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: 0.3s ease;
+            box-shadow: 0 10px 25px rgba(229, 27, 35, 0.20);
+        }
+
+        .login-button:hover {
+            background: #171717;
+            transform: translateY(-2px);
+            box-shadow: 0 14px 30px rgba(0,0,0,0.15);
+        }
+
+        .login-button:active {
+            transform: scale(0.98);
+        }
+
+        .login-button:disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+
+        .arrow {
+            font-size: 20px;
+            transition: 0.3s ease;
+        }
+
+        .login-button:hover .arrow {
+            transform: translateX(5px);
+        }
+
+
+        /* =========================
+           DIVIDER
+        ========================= */
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .divider span {
+            flex: 1;
+            height: 1px;
+            background: #e5e5e5;
+        }
+
+        .divider p {
+            color: #999;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+
+        /* =========================
+           CREATE ACCOUNT
+        ========================= */
+
+        .create-account {
+            height: 55px;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #171717;
+            font-size: 15px;
+            font-weight: 700;
+            transition: 0.3s ease;
+        }
+
+        .create-account:hover {
+            border-color: #e51b23;
+            color: #e51b23;
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           TERMS
+        ========================= */
+
+        .terms {
+            text-align: center;
+            color: #888;
+            font-size: 12px;
+            line-height: 1.7;
+            margin-top: 25px;
+        }
+
+        .terms a {
+            color: #e51b23;
+            font-weight: 600;
+        }
+
+
+        /* =========================
+           BACK HOME
+        ========================= */
+
+        .back-home {
+            display: block;
+            text-align: center;
+            margin-top: 22px;
+            color: #555;
+            font-size: 14px;
+            font-weight: 700;
+            transition: 0.3s ease;
+        }
+
+        .back-home:hover {
+            color: #e51b23;
+            transform: translateX(-3px);
+        }
+
+
+        /* =========================
+           ANIMATIONS
+        ========================= */
+
+        @keyframes imageZoom {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.07);
+            }
+        }
+
+        @keyframes textUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes boxAppear {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-5px);
+            }
+
+            50% {
+                transform: translateX(5px);
+            }
+
+            75% {
+                transform: translateX(-5px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .login-image {
+                width: 42%;
+            }
+
+            .login-section {
+                width: 58%;
+                padding: 35px;
+            }
+
+            .image-content {
+                padding: 35px;
+            }
+
+            .image-text h1 {
+                font-size: 45px;
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .login-page {
+                display: block;
+            }
+
+            .login-image {
+                display: none;
+            }
+
+            .login-section {
+                width: 100%;
+                min-height: 100vh;
+                padding: 30px 22px;
+            }
+
+            .login-box {
+                max-width: 500px;
+            }
+
+            .mobile-logo {
+                display: block;
+            }
+
+            .welcome h2 {
+                font-size: 32px;
+            }
+
+        }
+
+
+        @media (max-width: 450px) {
+
+            .login-section {
+                padding: 25px 18px;
+            }
+
+            .mobile-logo {
+                font-size: 28px;
+                margin-bottom: 28px;
+            }
+
+            .welcome h2 {
+                font-size: 28px;
+            }
+
+            .options {
+                align-items: flex-start;
+            }
+
+            .remember {
+                font-size: 13px;
+            }
+
+            #forgotPassword {
+                font-size: 13px;
+            }
+
+        }
+
+    </style>
 </head>
+
 
 <body>
 
     <main class="login-page">
 
+
         <!-- LEFT IMAGE SECTION -->
 
         <section class="login-image">
 
-            <img src="./images/Hamburger.jpg" alt="Food">
+            <img
+                src="./images/Hamburger.jpg"
+                alt="Food"
+            >
 
             <div class="image-overlay"></div>
 
@@ -58,6 +667,7 @@
 
             <div class="login-box">
 
+
                 <!-- MOBILE LOGO -->
 
                 <a href="index.html" class="mobile-logo">
@@ -84,7 +694,11 @@
 
                 <!-- LOGIN FORM -->
 
-                <form class="login-form" id="loginForm">
+                <form
+                    class="login-form"
+                    id="loginForm"
+                >
+
 
                     <!-- EMAIL / PHONE -->
 
@@ -115,7 +729,10 @@
 
                         </div>
 
-                        <small class="error-message" id="emailError"></small>
+                        <small
+                            class="error-message"
+                            id="emailError"
+                        ></small>
 
                     </div>
 
@@ -158,7 +775,10 @@
 
                         </div>
 
-                        <small class="error-message" id="passwordError"></small>
+                        <small
+                            class="error-message"
+                            id="passwordError"
+                        ></small>
 
                     </div>
 
@@ -180,7 +800,10 @@
 
                         </label>
 
-                        <a href="#" id="forgotPassword">
+                        <a
+                            href="#"
+                            id="forgotPassword"
+                        >
                             Forgot password?
                         </a>
 
@@ -199,7 +822,10 @@
                             Login
                         </span>
 
-                        <span class="arrow" id="loginArrow">
+                        <span
+                            class="arrow"
+                            id="loginArrow"
+                        >
                             →
                         </span>
 
@@ -266,16 +892,9 @@
     </main>
 
 
-    
-
-
     <!-- JAVASCRIPT -->
 
     <script>
-
-        /* ================================
-           GET HTML ELEMENTS
-        ================================= */
 
         const loginForm =
             document.getElementById("loginForm");
@@ -301,21 +920,6 @@
         const loginArrow =
             document.getElementById("loginArrow");
 
-        const loginProcessing =
-            document.getElementById("loginProcessing");
-
-        const processingTitle =
-            document.getElementById("processingTitle");
-
-        const processingText =
-            document.getElementById("processingText");
-
-        const loadingCircle =
-            document.getElementById("loadingCircle");
-
-        const successIcon =
-            document.getElementById("successIcon");
-
         const showPassword =
             document.getElementById("showPassword");
 
@@ -323,9 +927,9 @@
             document.getElementById("forgotPassword");
 
 
-        /* ================================
+        /* =========================
            SHOW / HIDE PASSWORD
-        ================================= */
+        ========================= */
 
         showPassword.addEventListener(
             "click",
@@ -359,9 +963,9 @@
         );
 
 
-        /* ================================
-           CLEAR ERRORS WHILE TYPING
-        ================================= */
+        /* =========================
+           CLEAR EMAIL ERROR
+        ========================= */
 
         emailInput.addEventListener(
             "input",
@@ -369,11 +973,17 @@
 
                 emailError.textContent = "";
 
-                emailInput.classList.remove("input-error");
+                emailInput
+                    .closest(".input-box")
+                    .classList.remove("input-error");
 
             }
         );
 
+
+        /* =========================
+           CLEAR PASSWORD ERROR
+        ========================= */
 
         passwordInput.addEventListener(
             "input",
@@ -381,15 +991,17 @@
 
                 passwordError.textContent = "";
 
-                passwordInput.classList.remove("input-error");
+                passwordInput
+                    .closest(".input-box")
+                    .classList.remove("input-error");
 
             }
         );
 
 
-        /* ================================
+        /* =========================
            FORGOT PASSWORD
-        ================================= */
+        ========================= */
 
         forgotPassword.addEventListener(
             "click",
@@ -405,9 +1017,9 @@
         );
 
 
-        /* ================================
-           LOGIN FORM
-        ================================= */
+        /* =========================
+           LOGIN
+        ========================= */
 
         loginForm.addEventListener(
             "submit",
@@ -415,8 +1027,6 @@
 
                 event.preventDefault();
 
-
-                /* GET VALUES */
 
                 const email =
                     emailInput.value.trim();
@@ -431,48 +1041,44 @@
 
                 passwordError.textContent = "";
 
-                emailInput.classList.remove(
-                    "input-error"
-                );
+                emailInput
+                    .closest(".input-box")
+                    .classList.remove("input-error");
 
-                passwordInput.classList.remove(
-                    "input-error"
-                );
+                passwordInput
+                    .closest(".input-box")
+                    .classList.remove("input-error");
 
 
                 let valid = true;
 
 
-                /* ================================
-                   CHECK EMAIL / PHONE
-                ================================= */
+                /* CHECK EMAIL / PHONE */
 
                 if (email === "") {
 
                     emailError.textContent =
                         "Please enter your email or phone number.";
 
-                    emailInput.classList.add(
-                        "input-error"
-                    );
+                    emailInput
+                        .closest(".input-box")
+                        .classList.add("input-error");
 
                     valid = false;
 
                 }
 
 
-                /* ================================
-                   CHECK PASSWORD
-                ================================= */
+                /* CHECK PASSWORD */
 
                 if (password === "") {
 
                     passwordError.textContent =
                         "Please enter your password.";
 
-                    passwordInput.classList.add(
-                        "input-error"
-                    );
+                    passwordInput
+                        .closest(".input-box")
+                        .classList.add("input-error");
 
                     valid = false;
 
@@ -488,9 +1094,7 @@
                 }
 
 
-                /* ================================
-                   DISABLE BUTTON
-                ================================= */
+                /* BUTTON LOADING */
 
                 loginButton.disabled = true;
 
@@ -501,60 +1105,17 @@
                     "⏳";
 
 
-                /* ================================
-                   SHOW PROCESSING SCREEN
-                ================================= */
-
-                loginProcessing.classList.add(
-                    "show"
-                );
-
-                processingTitle.textContent =
-                    "Logging you in...";
-
-                processingText.textContent =
-                    "Please wait while we verify your details.";
-
-                loadingCircle.style.display =
-                    "block";
-
-                successIcon.style.display =
-                    "none";
-
-
-                /* ================================
-                   SIMULATE LOGIN
-                ================================= */
+                /* REDIRECT */
 
                 setTimeout(
                     function () {
 
-                        /* HIDE LOADER */
+                        loginButtonText.textContent =
+                            "Success!";
 
-                        loadingCircle.style.display =
-                            "none";
+                        loginArrow.textContent =
+                            "✓";
 
-
-                        /* SHOW SUCCESS */
-
-                        successIcon.style.display =
-                            "flex";
-
-                        loginProcessing.classList.add(
-                            "success"
-                        );
-
-
-                        processingTitle.textContent =
-                            "Login Successful!";
-
-                        processingText.textContent =
-                            "Taking you to your food page...";
-
-
-                        /* ================================
-                           REDIRECT
-                        ================================= */
 
                         setTimeout(
                             function () {
@@ -563,20 +1124,20 @@
                                     "order.html";
 
                             },
-                            1500
+                            700
                         );
 
                     },
-                    2500
+                    1000
                 );
 
             }
         );
 
 
-        /* ================================
-           ENTER KEY SUPPORT
-        ================================= */
+        /* =========================
+           ENTER KEY
+        ========================= */
 
         passwordInput.addEventListener(
             "keydown",
@@ -592,9 +1153,9 @@
         );
 
 
-        /* ================================
-           PAGE LOAD ANIMATION
-        ================================= */
+        /* =========================
+           PAGE LOAD
+        ========================= */
 
         window.addEventListener(
             "load",
